@@ -14,7 +14,7 @@ import bloc from "../assets/bloc.png";
 import riverpod from "../assets/riverpod.png";
 import fibase from "../assets/firebase.png";
 import dart from "../assets/dart.png";
-import axios from "../assets/axios.png";
+import javaAndroid from "../assets/android.png";
 import redux from "../assets/redux.png";
 const Experience = () => {
   const techs = [
@@ -24,17 +24,23 @@ const Experience = () => {
     { id: 4, src: reactImage, title: "React", style: "shadow-blue-600" },
     { id: 5, src: tailwind, title: "Tailwind", style: "shadow-sky-400" },
     { id: 6, src: node, title: "Node JS", style: "shadow-green-400" },
-    { id: 7, src: reactquery, title: "React-Query", style: "shadow-red-400" },
-    { id: 8, src: github, title: "GitHub", style: "shadow-gray-400" },
-    { id: 9, src: mongodb, title: "MongoDB", style: "shadow-white" },
-    { id: 10, src: redux, title: "Redux", style: "shadow-purple-400" },
-    { id: 11, src: materialui, title: "Material-UI", style: "shadow-sky-700" },
-    { id: 12, src: formilk, title: "Formilk", style: "shadow-blue-500" },
-    { id: 13, src: flutter, title: "Flutter", style: "shadow-blue-500" },
-    { id: 14, src: bloc, title: "Bloc", style: "shadow-blue-500" },
-    { id: 15, src: riverpod, title: "Riverpod", style: "shadow-blue-500" },
-    { id: 16, src: dart, title: "Dart", style: "shadow-green-300" },
-    { id: 17, src: fibase, title: "Firebase", style: "shadow-red-300" },
+    { id: 7, src: flutter, title: "Flutter", style: "shadow-blue-500" },
+    { id: 8, src: bloc, title: "Bloc", style: "shadow-blue-500" },
+    { id: 9, src: riverpod, title: "Riverpod", style: "shadow-blue-500" },
+    { id: 10, src: dart, title: "Dart", style: "shadow-green-300" },
+    { id: 11, src: fibase, title: "Firebase", style: "shadow-red-300" },
+    {
+      id: 12,
+      src: javaAndroid,
+      title: "Java Android",
+      style: "shadow-green-300",
+    },
+    { id: 13, src: reactquery, title: "React-Query", style: "shadow-red-400" },
+    { id: 14, src: github, title: "GitHub", style: "shadow-gray-400" },
+    { id: 15, src: mongodb, title: "MongoDB", style: "shadow-white" },
+    { id: 16, src: redux, title: "Redux", style: "shadow-purple-400" },
+    { id: 17, src: materialui, title: "Material-UI", style: "shadow-sky-700" },
+    { id: 18, src: formilk, title: "Formilk", style: "shadow-blue-500" },
   ];
   return (
     <div

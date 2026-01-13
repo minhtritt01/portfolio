@@ -15,7 +15,7 @@ const Home = () => {
     const options = {
       strings: [
         `Hey ! I'm a <span style="color:#19A3E0;text-decoration-line: underline;">Phan Minh Tri</span>`,
-        `I'm a <span style="color:#19A3E0;text-decoration-line: underline;">Frontend Developer</span>`,
+        `I'm a <span style="color:#19A3E0;text-decoration-line: underline;">Software Engineer</span>`,
       ],
       typeSpeed: 50,
       backSpeed: 50,
@@ -25,8 +25,6 @@ const Home = () => {
     typed.current = new Typed(el.current, options);
 
     return () => {
-      // // Make sure to destroy Typed instance during cleanup
-      // // to prevent memory leaks
       typed.current.destroy();
     };
   }, []);
@@ -39,10 +37,9 @@ const Home = () => {
         <div className="flex flex-col justify-center h-full flex-[2] ml-2">
           <h2 className="text-4xl sm:text-7xl text-white font-bold" ref={el} />
           <p className="text-gray-400 py-2 max-w-md ">
-            I have learned 4 years of experience building and designing
-            software. I love to work on web application using technologies like
-            React, Tailwind, Nodejs, Express and Mongoose. Currently, I
-            specialize in Flutter for developing cross-platform applications.
+            I have 3 years of experience building and designing software. I
+            specialize in Java for Android, and Flutter for mobile and web
+            applications. I also build web apps using React.js and Next.js.
           </p>
 
           <div>
