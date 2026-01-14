@@ -1,6 +1,6 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { HiOutlineMail } from 'react-icons/hi';
-import { BsFillPersonLinesFill, BsFacebook } from 'react-icons/bs';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { BsFillPersonLinesFill, BsFacebook } from "react-icons/bs";
 const SocialLinks = () => {
   const links = [
     {
@@ -10,8 +10,8 @@ const SocialLinks = () => {
           LinkedIn <FaLinkedin size={25} />
         </>
       ),
-      href: 'https://www.linkedin.com/in/minhtritt01/',
-      style: 'rounded-tr-md bg-blue-500',
+      href: "https://www.linkedin.com/in/minhtritt01/",
+      style: "rounded-tr-md bg-blue-500",
     },
     {
       id: 2,
@@ -20,8 +20,8 @@ const SocialLinks = () => {
           GitHub <FaGithub size={25} />
         </>
       ),
-      href: 'https://github.com/minhtritt01',
-      style: 'bg-black',
+      href: "https://github.com/minhtritt01",
+      style: "bg-black",
     },
     {
       id: 3,
@@ -30,8 +30,8 @@ const SocialLinks = () => {
           Facebook <BsFacebook size={25} />
         </>
       ),
-      href: 'https://www.facebook.com/minhtritt01/',
-      style: 'bg-[#1095F4]',
+      href: "https://www.facebook.com/minhtritt01/",
+      style: "bg-[#1095F4]",
     },
     {
       id: 4,
@@ -40,8 +40,8 @@ const SocialLinks = () => {
           Mail <HiOutlineMail size={25} />
         </>
       ),
-      href: 'mailto:minhtritt01@gmail.com',
-      style: 'bg-green-300',
+      href: "mailto:minhtritt01@gmail.com",
+      style: "bg-green-300",
     },
     {
       id: 5,
@@ -50,13 +50,13 @@ const SocialLinks = () => {
           Resume <BsFillPersonLinesFill size={25} />
         </>
       ),
-      href: './resume.pdf',
-      style: 'rounded-br-md bg-gray-500',
+      href: "./PhanMinhTri_resume.pdf",
+      style: "rounded-br-md bg-gray-500",
       download: true,
     },
   ];
   return (
-    <div className='hidden lg:flex flex-col top-[35%] left-0 fixed'>
+    <div className="hidden lg:flex flex-col top-[35%] left-0 fixed">
       <ul>
         {links.map(({ id, child, href, style, download }) => (
           <li
@@ -65,10 +65,10 @@ const SocialLinks = () => {
           >
             <a
               href={href}
-              className='text-white flex justify-between items-center w-full'
+              className="text-white flex justify-between items-center w-full"
               download={download}
-              target='_blank'
-              rel='noreferrer'
+              target="_blank"
+              rel="noreferrer"
             >
               {child}
             </a>

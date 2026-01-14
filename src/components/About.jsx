@@ -49,9 +49,9 @@ const About = () => {
                 <span className="flex-1">Phone : </span>
                 <span className="flex-1">0834790997</span>
               </p>
-              <form method="get" action="./resume.pdf">
+              <form method="get" action="./PhanMinhTri_resume.pdf">
                 <button className="bg-blue-600 mt-4 py-3 px-6 text-lg cursor-pointer rounded-full">
-                  DOWNLOAD CV
+                  View CV
                 </button>
               </form>
             </div>
