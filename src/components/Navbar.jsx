@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
+import logo from "../assets/logo.svg";
 
 const links = [
   { id: 1, link: "home" },
@@ -29,9 +30,9 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <h1 className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-widest uppercase">
-        &lt;Tri Dev /&gt;
-      </h1>
+      <Link to="home" smooth duration={500} className="cursor-pointer">
+        <img src={logo} alt="Tri Dev" className="h-8 w-auto" />
+      </Link>
 
       <ul className="hidden md:flex items-center gap-1">
         {links.map(({ link, id }) => (

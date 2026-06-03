@@ -75,31 +75,36 @@ const Contact = () => {
           <p className="text-gray-400 mt-4">Have a project in mind? Let's talk.</p>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row gap-12 items-start">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start">
           {/* Left info */}
           <motion.div
-            className="flex flex-col gap-6 md:w-1/3"
+            className="w-full md:w-1/3 flex flex-col gap-4 md:gap-6 max-w-lg mx-auto md:max-w-none"
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div>
+            {/* Description — hidden on mobile to save space */}
+            <div className="hidden md:block">
               <h3 className="text-xl font-semibold mb-2">Get in touch</h3>
               <p className="text-gray-400 leading-relaxed">
                 I'm always open to discussing new opportunities, interesting projects, or just a friendly chat.
               </p>
             </div>
-            <div className="flex flex-col gap-3">
-              <a href="mailto:minhtritt01@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-cyan-400 transition-colors">
-                <HiOutlineMail size={18} />
-                <span>minhtritt01@gmail.com</span>
+
+            {/* Contact details — 2-col on mobile, stacked on desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
+              <a href="mailto:minhtritt01@gmail.com" className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors min-w-0">
+                <HiOutlineMail size={16} className="shrink-0" />
+                <span className="text-sm truncate">minhtritt01@gmail.com</span>
               </a>
-              <a href="tel:+840834790997" className="flex items-center gap-3 text-gray-400 hover:text-cyan-400 transition-colors">
-                <HiOutlinePhone size={18} />
-                <span>(+84) 834 790 997</span>
+              <a href="tel:+840834790997" className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors">
+                <HiOutlinePhone size={16} className="shrink-0" />
+                <span className="text-sm">(+84) 834 790 997</span>
               </a>
             </div>
-            <div className="flex gap-3 mt-2">
+
+            {/* Social icons */}
+            <div className="flex gap-3">
               {socialLinks.map(({ icon, href, label }) => (
                 <a
                   key={label}
@@ -117,14 +122,14 @@ const Contact = () => {
 
           {/* Form */}
           <motion.div
-            className="flex-1"
+            className="flex-1 w-full"
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form
               onSubmit={onSubmit}
-              className="flex flex-col gap-4 p-8 rounded-2xl bg-white/5 border border-gray-700/50 backdrop-blur-sm"
+              className="flex flex-col gap-4 p-6 md:p-8 rounded-2xl bg-white/5 border border-gray-700/50 backdrop-blur-sm max-w-lg mx-auto md:max-w-none"
             >
               <div className="relative">
                 <MdPerson size={18} className="absolute left-3 top-3.5 text-gray-500" />
