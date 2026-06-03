@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Contact from './components/Contact';
 import Portfolio from './components/Portfolio';
 import SocialLinks from './components/SocialLinks';
+import Footer from './components/Footer';
 import { useEffect, useState } from 'react';
 import loadinggif from './assets/loading.gif';
 import { ToastContainer } from 'react-toastify';
@@ -41,6 +42,7 @@ function App() {
           <Portfolio />
           <Experience />
           <Contact />
+          <Footer />
           <SocialLinks />
           <ToastContainer />
         </>

@@ -1,83 +1,95 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-scroll";
-const NavbarItem = ({ title, classProps, handleClick }) => {
-  return (
-    <li
-      className={`mx-4 cursor-pointer ${classProps} capitalize font-medium text-gray-200 duration-500 hover:scale-110`}
-    >
-      <Link to={title} smooth duration={500} onClick={handleClick}>
-        {title}
-      </Link>
-    </li>
-  );
-};
+
+const links = [
+  { id: 1, link: "home" },
+  { id: 2, link: "about" },
+  { id: 3, link: "portfolio" },
+  { id: 4, link: "experience" },
+  { id: 5, link: "contact" },
+];
+
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
 
-  const links = [
-    {
-      id: 1,
-      link: "home",
-    },
-    {
-      id: 2,
-      link: "about",
-    },
-    {
-      id: 3,
-      link: "portfolio",
-    },
-    {
-      id: 4,
-      link: "experience",
-    },
-    {
-      id: 5,
-      link: "contact",
-    },
-  ];
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-black fixed z-50">
-      <div>
-        <h1 className="text-5xl ml-2">Tri Dev</h1>
-      </div>
-      <ul className="hidden md:flex">
+    <nav
+      className={`flex justify-between items-center w-full h-20 px-6 text-white fixed z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/60 backdrop-blur-md shadow-lg shadow-black/40"
+          : "bg-transparent"
+      }`}
+    >
+      <h1 className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-widest uppercase">
+        &lt;Tri Dev /&gt;
+      </h1>
+
+      <ul className="hidden md:flex items-center gap-1">
         {links.map(({ link, id }) => (
-          <li
-            key={id}
-            className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-110 duration-200"
-          >
-            <Link to={link} smooth duration={500}>
+          <li key={id}>
+            <Link
+              to={link}
+              smooth
+              duration={500}
+              spy
+              onSetActive={() => setActive(link)}
+              className={`relative px-4 py-2 cursor-pointer capitalize font-medium transition-colors duration-200 rounded-md group ${
+                active === link ? "text-cyan-400" : "text-gray-400 hover:text-white"
+              }`}
+            >
               {link}
+              <span
+                className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full transition-all duration-300 ${
+                  active === link ? "w-4/5" : "w-0 group-hover:w-4/5"
+                }`}
+              />
             </Link>
           </li>
         ))}
       </ul>
 
-      <div
+      <button
         onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden"
+        className="cursor-pointer z-10 text-gray-400 md:hidden"
+        aria-label="Toggle menu"
       >
-        {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
-      </div>
+        {nav ? <FaTimes size={26} /> : <FaBars size={26} />}
+      </button>
+
       {nav && (
-        <ul className="z-10 fixed top-0 -right-2 p-3 w-[70vw] h-screen shadow-2xl md:hidden list-none flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in">
-          <li className="text-xl w-full my-2">
-            <AiOutlineClose onClick={() => setNav(false)} />
-          </li>
+        <ul className="z-10 fixed top-0 right-0 p-8 w-[70vw] h-screen shadow-2xl md:hidden flex flex-col justify-center items-end gap-6 bg-black/90 backdrop-blur-lg">
+          <button
+            className="absolute top-6 right-6 text-gray-400"
+            onClick={() => setNav(false)}
+          >
+            <FaTimes size={24} />
+          </button>
           {links.map(({ link, id }) => (
-            <NavbarItem
-              handleClick={() => setNav(false)}
-              key={link + id}
-              title={link}
-              classProps="my-2 text-lg"
-            />
+            <li key={id}>
+              <Link
+                to={link}
+                smooth
+                duration={500}
+                onClick={() => setNav(false)}
+                className="text-2xl font-semibold capitalize text-gray-200 hover:text-cyan-400 transition-colors duration-200 cursor-pointer"
+              >
+                {link}
+              </Link>
+            </li>
           ))}
         </ul>
       )}
-    </div>
+    </nav>
   );
 };
+
 export default Navbar;
