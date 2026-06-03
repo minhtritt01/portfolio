@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40">
+  <!-- Background -->
+  <rect width="190" height="40" rx="8" fill="#0d0d1a"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Triangle mark (T for Tri, triangle shape) -->
+  <polygon points="20,4 36,34 4,34" fill="none" stroke="url(#grad)" stroke-width="2.8" stroke-linejoin="round"/>
+  <!-- Inner vertical bar of the T -->
+  <line x1="20" y1="16" x2="20" y2="34" stroke="url(#grad)" stroke-width="2.8" stroke-linecap="round"/>
+
+  <!-- Wordmark: Tri Dev -->
+  <text x="48" y="28" font-family="'Segoe UI', Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="0.5" fill="url(#grad)">Tri</text>
+  <text x="84" y="28" font-family="'Segoe UI', Arial, sans-serif" font-size="19" font-weight="300" letter-spacing="1" fill="url(#grad)">Dev</text>
+
+  <!-- Dot accent -->
+  <circle cx="183" cy="26" r="3" fill="#22d3ee"/>
+</svg>
