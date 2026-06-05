@@ -91,6 +91,7 @@ const portfolios = [
     tags: ["Flutter", "BLoC", "Firebase"],
     android:
       "https://play.google.com/store/apps/details?id=vn.com.quocviet.vn.qv_car_management.qv_car_management&hl=en",
+    ios: "https://apps.apple.com/us/app/qv-car-booking/id6742679566",
   },
   {
     id: 9,
