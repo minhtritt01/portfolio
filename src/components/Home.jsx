@@ -46,7 +46,7 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-cyan-400 font-medium tracking-widest uppercase text-sm mb-3">
+          <p className="hidden sm:block text-cyan-400 font-medium tracking-widest uppercase text-sm mb-3">
             Welcome to my portfolio
           </p>
           <h2

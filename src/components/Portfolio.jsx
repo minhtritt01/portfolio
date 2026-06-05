@@ -6,32 +6,53 @@ import spotifyFlutter from "../assets/portfolio/spotify_flutter.png";
 import sfi from "../assets/portfolio/sfi.png";
 import ail from "../assets/portfolio/ailglobal.png";
 import syrup from "../assets/portfolio/syrup.png";
+import onskyHealth from "../assets/portfolio/onskyHealth.webp";
+import qvCar from "../assets/portfolio/qvCar.webp";
+import skycare from "../assets/portfolio/skycare.webp";
+import skyjoy from "../assets/portfolio/skyjoy.webp";
 
 const portfolios = [
   {
+    id: 10,
+    title: "SkyJoy",
+    description: "SkyJoy — Loyalty & Rewards platform for Vietjet Air",
+    category: "Mobile App",
+    src: skyjoy,
+    padded: true,
+    tags: ["Flutter", "BLoC", "Firebase", "Clean Arch"],
+    android:
+      "https://play.google.com/store/apps/details?id=loyalty.skyjoy.vn&hl=vi",
+    ios: "https://apps.apple.com/vn/app/skyjoy/id1658311716",
+  },
+  {
     id: 1,
     title: "Smart Form Interface",
-    description: "Digitized form & reporting system for PepsiCo factories — automated workflows and real-time data visualization across mobile, web & Windows.",
+    description:
+      "Digitized form & reporting system for PepsiCo factories — automated workflows and real-time data visualization across mobile, web & Windows.",
     category: "Mobile / Web / Desktop",
     src: sfi,
-    android: "https://play.google.com/store/apps/details?id=vn.com.quocviet.spvb.eforms",
+    android:
+      "https://play.google.com/store/apps/details?id=vn.com.quocviet.spvb.eforms",
     ios: "https://apps.apple.com/us/app/smart-form-interface/id6737530804",
     tags: ["Flutter", "BLoC", "Clean Arch", "CI/CD"],
   },
   {
     id: 2,
     title: "Syrup Mixing",
-    description: "Cross-platform automation system for PepsiCo syrup production — batch tracking, ingredient control & Zebra scanner integration.",
+    description:
+      "Cross-platform automation system for PepsiCo syrup production — batch tracking, ingredient control & Zebra scanner integration.",
     category: "Mobile / Web / Desktop",
     src: syrup,
-    android: "https://play.google.com/store/apps/details?id=vn.quocviet.syrupmixingscanner",
+    android:
+      "https://play.google.com/store/apps/details?id=vn.quocviet.syrupmixingscanner",
     ios: "https://testflight.apple.com/join/CKZt3XsR",
-    tags: ["Flutter", "BLoC", "Zebra Scanner", "MQTT"],
+    tags: ["Flutter", "BLoC", "Zebra Scanner"],
   },
   {
     id: 3,
     title: "TeamPower",
-    description: "HR & team management web platform with role-based dashboards, project tracking and API integrations.",
+    description:
+      "HR & team management web platform with role-based dashboards, project tracking and API integrations.",
     category: "Web App",
     src: teampower,
     demo: "https://teampowervn.com/",
@@ -40,16 +61,55 @@ const portfolios = [
   {
     id: 4,
     title: "Ail Global",
-    description: "Corporate website with modern design, multi-section layout, and third-party API integrations.",
+    description:
+      "Corporate website with modern design, multi-section layout, and third-party API integrations.",
     category: "Web App",
     src: ail,
     demo: "https://ailglobal.net/",
     tags: ["HTML", "CSS", "JavaScript", "API"],
   },
   {
+    id: 7,
+    title: "OnSky Health",
+    description:
+      "Health management mobile app with patient tracking, appointments, and medical records.",
+    category: "Mobile App",
+    src: onskyHealth,
+    padded: true,
+    tags: ["Flutter", "Firebase", "Real-time Systems"],
+    android:
+      "https://play.google.com/store/apps/details?id=com.onskyinc.smartiot.healthandhome&hl=en",
+    ios: "https://apps.apple.com/us/app/onsky-health/id1502053185",
+  },
+  {
+    id: 8,
+    title: "QV Car",
+    description:
+      "Car management and booking mobile application with real-time tracking and service scheduling.",
+    category: "Mobile App",
+    src: qvCar,
+    tags: ["Flutter", "BLoC", "Firebase"],
+    android:
+      "https://play.google.com/store/apps/details?id=vn.com.quocviet.vn.qv_car_management.qv_car_management&hl=en",
+  },
+  {
+    id: 9,
+    title: "SkyCare",
+    description:
+      "Healthcare platform connecting patients with caregivers for seamless remote care management.",
+    category: "Mobile App",
+    src: skycare,
+    padded: true,
+    tags: ["Flutter", "Firebase", "Real-time Systems"],
+    android:
+      "https://play.google.com/store/apps/details?id=com.onskyheath.skycare&hl=en",
+    ios: "https://apps.apple.com/vn/app/onsky-skycare/id6504265548?l=vi",
+  },
+  {
     id: 5,
     title: "Spotify Flutter",
-    description: "Full-featured Spotify clone with authentication, music playback, playlists, and cross-platform support.",
+    description:
+      "Full-featured Spotify clone with authentication, music playback, playlists, and cross-platform support.",
     category: "Mobile App",
     src: spotifyFlutter,
     demo: "https://spotify-minhtritt01.web.app/",
@@ -59,7 +119,8 @@ const portfolios = [
   {
     id: 6,
     title: "Dashboard",
-    description: "Admin dashboard with product management, sales charts, calendar integration, and e-commerce analytics.",
+    description:
+      "Admin dashboard with product management, sales charts, calendar integration, and e-commerce analytics.",
     category: "Web App",
     src: dashboard,
     demo: "https://dashboard-shoppy-minhtri.netlify.app/",
@@ -69,9 +130,24 @@ const portfolios = [
 ];
 
 const IconEye = () => (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+    />
   </svg>
 );
 
@@ -114,7 +190,9 @@ const Portfolio = () => {
             Portfolio
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-gray-400 mt-4">A selection of my latest projects</p>
+          <p className="text-gray-400 mt-4">
+            A selection of my latest projects
+          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -132,7 +210,6 @@ const Portfolio = () => {
 
               {/* Card */}
               <div className="relative overflow-hidden rounded-2xl flex flex-col bg-[rgba(255,255,255,0.06)] border border-white/[0.09] group-hover:border-transparent backdrop-blur-sm transition-colors duration-500">
-
                 {/* Category badge */}
                 <div className="absolute top-3 left-3 z-10">
                   <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-black/60 border border-white/10 text-cyan-300 backdrop-blur-sm">
@@ -141,12 +218,25 @@ const Portfolio = () => {
                 </div>
 
                 {/* Image */}
-                <div className="relative overflow-hidden bg-[#0a0a14]" style={{ aspectRatio: "16/9" }}>
-                  <img
-                    src={project.src}
-                    alt={project.title}
-                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                  />
+                <div
+                  className="relative overflow-hidden bg-[#0a0a14] flex items-center justify-center"
+                  style={{ aspectRatio: "16/9" }}
+                >
+                  {project.padded ? (
+                    <div className="w-full h-full flex items-center justify-center p-6 transition-transform duration-700 group-hover:scale-105">
+                      <img
+                        src={project.src}
+                        alt={project.title}
+                        className="max-w-[55%] max-h-full object-contain drop-shadow-2xl"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      src={project.src}
+                      alt={project.title}
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
                 </div>
@@ -165,7 +255,10 @@ const Portfolio = () => {
                   {/* Tags */}
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.06] border border-white/[0.08] text-gray-400">
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.06] border border-white/[0.08] text-gray-400"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -197,7 +290,9 @@ const Portfolio = () => {
                       <div className="flex gap-2">
                         {project.android && (
                           <button
-                            onClick={() => window.open(project.android, "_blank")}
+                            onClick={() =>
+                              window.open(project.android, "_blank")
+                            }
                             className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white transition-all duration-300 hover:shadow-md hover:shadow-green-500/30"
                           >
                             <IconAndroid /> Android
