@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import loadinggif from './assets/loading.gif';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ThemeProvider } from './context/ThemeContext';
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -25,29 +26,31 @@ function App() {
     loadData();
   }, [loading]);
   return (
-    <div>
-      {loading ? (
-        <div className='w-full h-screen flex justify-center items-center bg-gradient-to-b from-black to-gray-800'>
-          <img
-            src={loadinggif}
-            className='w-[150px] h-[150px]'
-            alt='loading-gif'
-          />
-        </div>
-      ) : (
-        <>
-          <Navbar />
-          <Home />
-          <About />
-          <Portfolio />
-          <Experience />
-          <Contact />
-          <Footer />
-          <SocialLinks />
-          <ToastContainer />
-        </>
-      )}
-    </div>
+    <ThemeProvider>
+      <div>
+        {loading ? (
+          <div className='w-full h-screen flex justify-center items-center bg-gradient-to-b from-black to-gray-800'>
+            <img
+              src={loadinggif}
+              className='w-[150px] h-[150px]'
+              alt='loading-gif'
+            />
+          </div>
+        ) : (
+          <>
+            <Navbar />
+            <Home />
+            <About />
+            <Portfolio />
+            <Experience />
+            <Contact />
+            <Footer />
+            <SocialLinks />
+            <ToastContainer />
+          </>
+        )}
+      </div>
+    </ThemeProvider>
   );
 }
 

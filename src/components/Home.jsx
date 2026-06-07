@@ -28,12 +28,12 @@ const Home = () => {
   return (
     <div
       name="home"
-      className="relative h-screen w-full overflow-hidden bg-[#020207]"
+      className="relative h-screen w-full overflow-hidden bg-[#f4f7ff] dark:bg-[#020207]"
     >
       {/* Dot grid texture */}
       <div className="absolute inset-0 dot-grid opacity-100" />
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#020207] via-[#060612] to-[#020207]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#f4f7ff] via-[#eef1ff] to-[#f4f7ff] dark:from-[#020207] dark:via-[#060612] dark:to-[#020207]" />
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-cyan-500/20 blur-[100px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-600/20 blur-[100px] animate-pulse delay-1000" />
@@ -46,14 +46,14 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="hidden sm:block text-cyan-400 font-medium tracking-widest uppercase text-sm mb-3">
+          <p className="hidden sm:block text-cyan-500 dark:text-cyan-400 font-medium tracking-widest uppercase text-sm mb-3">
             Welcome to my portfolio
           </p>
           <h2
-            className="text-4xl sm:text-6xl text-white font-bold min-h-[80px]"
+            className="text-4xl sm:text-6xl text-slate-800 dark:text-white font-bold min-h-[80px]"
             ref={el}
           />
-          <p className="text-gray-400 py-4 max-w-md leading-relaxed">
+          <p className="text-slate-500 dark:text-gray-400 py-4 max-w-md leading-relaxed">
             3+ years building cross-platform mobile, web & desktop apps.
             Specialising in Flutter and React — shipped on App Store, Google
             Play & Microsoft Store. Actively using AI tools to ship faster.
@@ -70,7 +70,7 @@ const Home = () => {
               </button>
             </Link>
             <Link to="contact" smooth duration={500}>
-              <button className="text-white rounded-lg px-6 py-3 border border-gray-600 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300 font-medium">
+              <button className="text-slate-700 dark:text-white rounded-lg px-6 py-3 border border-slate-300 dark:border-gray-600 hover:border-cyan-500 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 font-medium">
                 Hire Me
               </button>
             </Link>
@@ -95,7 +95,6 @@ const Home = () => {
           </Tilt>
         </motion.div>
       </div>
-
     </div>
   );
 };

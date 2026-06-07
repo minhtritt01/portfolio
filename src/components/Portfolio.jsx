@@ -177,7 +177,7 @@ const Portfolio = () => {
   return (
     <div
       name="portfolio"
-      className="bg-[#060609] dot-grid w-full text-white min-h-screen py-20"
+      className="bg-[#f4f7ff] dark:bg-[#060609] dot-grid w-full text-slate-800 dark:text-white min-h-screen py-20"
     >
       <div className="max-w-screen-xl px-6 mx-auto">
         <motion.div
@@ -191,7 +191,7 @@ const Portfolio = () => {
             Portfolio
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-gray-400 mt-4">
+          <p className="text-slate-500 dark:text-gray-400 mt-4">
             A selection of my latest projects
           </p>
         </motion.div>
@@ -206,21 +206,21 @@ const Portfolio = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
             >
-              {/* Glowing border layer — sits behind the card */}
+              {/* Glowing border layer */}
               <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-cyan-500/50 via-blue-600/30 to-cyan-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
 
               {/* Card */}
-              <div className="relative overflow-hidden rounded-2xl flex flex-col bg-[rgba(255,255,255,0.06)] border border-white/[0.09] group-hover:border-transparent backdrop-blur-sm transition-colors duration-500">
+              <div className="relative overflow-hidden rounded-2xl flex flex-col bg-white dark:bg-[rgba(255,255,255,0.06)] border border-slate-200 dark:border-white/[0.09] group-hover:border-transparent backdrop-blur-sm transition-colors duration-500 shadow-sm dark:shadow-none">
                 {/* Category badge */}
                 <div className="absolute top-3 left-3 z-10">
-                  <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-black/60 border border-white/10 text-cyan-300 backdrop-blur-sm">
+                  <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-white/80 dark:bg-black/60 border border-slate-200 dark:border-white/10 text-cyan-600 dark:text-cyan-300 backdrop-blur-sm">
                     {project.category}
                   </span>
                 </div>
 
                 {/* Image */}
                 <div
-                  className="relative overflow-hidden bg-[#0a0a14] flex items-center justify-center"
+                  className="relative overflow-hidden bg-slate-100 dark:bg-[#0a0a14] flex items-center justify-center"
                   style={{ aspectRatio: "16/9" }}
                 >
                   {project.padded ? (
@@ -245,10 +245,10 @@ const Portfolio = () => {
                 {/* Content */}
                 <div className="flex flex-col flex-1 p-5 gap-3">
                   <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 mb-1">
+                    <h3 className="text-base font-bold text-slate-800 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300 mb-1">
                       {project.title}
                     </h3>
-                    <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                    <p className="text-slate-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
                   </div>
@@ -258,7 +258,7 @@ const Portfolio = () => {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.06] border border-white/[0.08] text-gray-400"
+                        className="px-2 py-0.5 text-[10px] rounded-md bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.08] text-slate-500 dark:text-gray-400"
                       >
                         {tag}
                       </span>
@@ -280,7 +280,7 @@ const Portfolio = () => {
                         {project.code && (
                           <button
                             onClick={() => window.open(project.code, "_blank")}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 text-gray-300 transition-all duration-200"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20 text-slate-600 dark:text-gray-300 transition-all duration-200"
                           >
                             <IconGithub /> Code
                           </button>
@@ -302,7 +302,7 @@ const Portfolio = () => {
                         {project.ios && (
                           <button
                             onClick={() => window.open(project.ios, "_blank")}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 text-gray-300 transition-all duration-200"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20 text-slate-600 dark:text-gray-300 transition-all duration-200"
                           >
                             <IconApple /> iOS
                           </button>

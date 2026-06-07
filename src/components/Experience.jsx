@@ -83,22 +83,22 @@ const categories = [
   },
 ];
 
-const SkillCard = ({ src, placeholder, title, glow, badge, index }) => (
+const SkillCard = ({ src, title, glow, badge, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.4, delay: index * 0.05 }}
-    className={`relative flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 shadow-lg ${glow} hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default`}
+    className={`relative flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-sm dark:shadow-none ${glow} hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default`}
   >
     {src ? (
       <img src={src} alt={title} className="w-14 h-14 object-contain" />
     ) : (
-      <div className="w-14 h-14 rounded-xl bg-white/10 border border-dashed border-white/20 flex items-center justify-center text-gray-500 text-xs text-center leading-tight px-1">
+      <div className="w-14 h-14 rounded-xl bg-slate-200 dark:bg-white/10 border border-dashed border-slate-300 dark:border-white/20 flex items-center justify-center text-slate-400 dark:text-gray-500 text-xs text-center leading-tight px-1">
         {title}
       </div>
     )}
-    <p className="text-sm text-gray-300 font-medium text-center">{title}</p>
+    <p className="text-sm text-slate-600 dark:text-gray-300 font-medium text-center">{title}</p>
     {badge && (
       <span className="absolute -top-2 -right-2 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-600 text-white shadow-md shadow-violet-900/60 leading-tight whitespace-nowrap">
         {badge}
@@ -114,9 +114,9 @@ const Experience = () => {
   return (
     <div
       name="experience"
-      className="bg-[#0d0d1a] dot-grid w-full min-h-screen py-20"
+      className="bg-[#eaedfa] dark:bg-[#0d0d1a] dot-grid w-full min-h-screen py-20"
     >
-      <div className="max-w-screen-lg mx-auto px-4 text-white">
+      <div className="max-w-screen-lg mx-auto px-4 text-slate-800 dark:text-white">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -128,7 +128,7 @@ const Experience = () => {
             Skills
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-gray-400 mt-4">Technologies I work with</p>
+          <p className="text-slate-500 dark:text-gray-400 mt-4">Technologies I work with</p>
         </motion.div>
 
         <div className="flex flex-col gap-12">
@@ -146,7 +146,7 @@ const Experience = () => {
                 </span>
                 <div className={`flex-1 h-px bg-gradient-to-r ${cat.color} opacity-30`} />
                 {cat.label === "AI Tools" && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-500/20 text-violet-600 dark:text-violet-300 border border-violet-300 dark:border-violet-500/30">
                     Daily workflow
                   </span>
                 )}

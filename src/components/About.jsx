@@ -27,7 +27,7 @@ const StatCounter = ({ end, label, suffix = "+" }) => {
         {count}
         {suffix}
       </p>
-      <p className="text-gray-400 text-sm mt-1">{label}</p>
+      <p className="text-slate-500 dark:text-gray-400 text-sm mt-1">{label}</p>
     </div>
   );
 };
@@ -39,7 +39,7 @@ const About = () => {
   return (
     <div
       name="about"
-      className="w-full min-h-screen bg-[#0d0d1a] dot-grid text-white py-20"
+      className="w-full min-h-screen bg-[#eaedfa] dark:bg-[#0d0d1a] dot-grid text-slate-800 dark:text-white py-20"
     >
       <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full">
         <motion.div
@@ -78,7 +78,7 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-slate-600 dark:text-gray-300 text-lg leading-relaxed">
               Software Engineer with 3+ years of experience specialising in
               Flutter for cross-platform mobile, web, and desktop applications.
               Strong expertise in Bloc/Provider, Clean Architecture, CI/CD
@@ -97,10 +97,10 @@ const About = () => {
                 ["Availability", "Open to work"],
               ].map(([label, value]) => (
                 <div key={label} className="flex flex-col gap-0.5">
-                  <span className="text-gray-500 text-sm uppercase tracking-wide">
+                  <span className="text-slate-400 dark:text-gray-500 text-sm uppercase tracking-wide">
                     {label}
                   </span>
-                  <span className="text-white font-medium">{value}</span>
+                  <span className="text-slate-800 dark:text-white font-medium">{value}</span>
                 </div>
               ))}
             </div>
@@ -118,7 +118,7 @@ const About = () => {
 
         {/* Stats */}
         <motion.div
-          className="mt-16 grid grid-cols-3 gap-6 border border-gray-700/50 rounded-2xl p-8 bg-white/5 backdrop-blur-sm"
+          className="mt-16 grid grid-cols-3 gap-6 border border-slate-200 dark:border-gray-700/50 rounded-2xl p-8 bg-slate-50 dark:bg-white/5 backdrop-blur-sm"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}

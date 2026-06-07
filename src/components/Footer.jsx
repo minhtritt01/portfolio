@@ -6,7 +6,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-black border-t border-gray-800 py-8 text-gray-500">
+    <footer className="bg-white dark:bg-black border-t border-slate-200 dark:border-gray-800 py-8 text-slate-400 dark:text-gray-500">
       <div className="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm">
           © {year}{" "}
@@ -29,7 +29,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={label}
-              className="hover:text-cyan-400 transition-colors duration-200"
+              className="hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors duration-200"
             >
               {icon}
             </a>

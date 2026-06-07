@@ -52,13 +52,13 @@ const Contact = () => {
   };
 
   const inputClass =
-    "w-full p-3 pl-10 bg-white/5 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 text-white placeholder-gray-500 transition-colors duration-200";
-  const errorClass = "text-red-400 text-sm mt-1 ml-1";
+    "w-full p-3 pl-10 bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 transition-colors duration-200";
+  const errorClass = "text-red-500 dark:text-red-400 text-sm mt-1 ml-1";
 
   return (
     <div
       name="contact"
-      className="w-full min-h-screen bg-[#060609] dot-grid py-20 text-white"
+      className="w-full min-h-screen bg-[#f4f7ff] dark:bg-[#060609] dot-grid py-20 text-slate-800 dark:text-white"
     >
       <div className="max-w-screen-lg mx-auto px-4">
         <motion.div
@@ -72,7 +72,7 @@ const Contact = () => {
             Contact
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-gray-400 mt-4">Have a project in mind? Let's talk.</p>
+          <p className="text-slate-500 dark:text-gray-400 mt-4">Have a project in mind? Let's talk.</p>
         </motion.div>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start">
@@ -83,27 +83,24 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {/* Description — hidden on mobile to save space */}
             <div className="hidden md:block">
-              <h3 className="text-xl font-semibold mb-2">Get in touch</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-xl font-semibold mb-2 text-slate-800 dark:text-white">Get in touch</h3>
+              <p className="text-slate-500 dark:text-gray-400 leading-relaxed">
                 I'm always open to discussing new opportunities, interesting projects, or just a friendly chat.
               </p>
             </div>
 
-            {/* Contact details — 2-col on mobile, stacked on desktop */}
             <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
-              <a href="mailto:minhtritt01@gmail.com" className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors min-w-0">
+              <a href="mailto:minhtritt01@gmail.com" className="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors min-w-0">
                 <HiOutlineMail size={16} className="shrink-0" />
                 <span className="text-sm truncate">minhtritt01@gmail.com</span>
               </a>
-              <a href="tel:+840834790997" className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="tel:+840834790997" className="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">
                 <HiOutlinePhone size={16} className="shrink-0" />
                 <span className="text-sm">(+84) 834 790 997</span>
               </a>
             </div>
 
-            {/* Social icons */}
             <div className="flex gap-3">
               {socialLinks.map(({ icon, href, label }) => (
                 <a
@@ -112,7 +109,7 @@ const Contact = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="p-2.5 rounded-lg bg-white/5 border border-gray-700 hover:border-cyan-500 hover:text-cyan-400 text-gray-400 transition-all duration-200"
+                  className="p-2.5 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-gray-700 hover:border-cyan-500 hover:text-cyan-500 dark:hover:text-cyan-400 text-slate-500 dark:text-gray-400 transition-all duration-200"
                 >
                   {icon}
                 </a>
@@ -129,10 +126,10 @@ const Contact = () => {
           >
             <form
               onSubmit={onSubmit}
-              className="flex flex-col gap-4 p-6 md:p-8 rounded-2xl bg-white/5 border border-gray-700/50 backdrop-blur-sm max-w-lg mx-auto md:max-w-none"
+              className="flex flex-col gap-4 p-6 md:p-8 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-gray-700/50 backdrop-blur-sm shadow-sm dark:shadow-none max-w-lg mx-auto md:max-w-none"
             >
               <div className="relative">
-                <MdPerson size={18} className="absolute left-3 top-3.5 text-gray-500" />
+                <MdPerson size={18} className="absolute left-3 top-3.5 text-slate-400 dark:text-gray-500" />
                 <input
                   id="name"
                   type="text"
@@ -149,7 +146,7 @@ const Contact = () => {
               </div>
 
               <div className="relative">
-                <MdEmail size={18} className="absolute left-3 top-3.5 text-gray-500" />
+                <MdEmail size={18} className="absolute left-3 top-3.5 text-slate-400 dark:text-gray-500" />
                 <input
                   type="email"
                   name="email"
@@ -165,7 +162,7 @@ const Contact = () => {
               </div>
 
               <div className="relative">
-                <MdMessage size={18} className="absolute left-3 top-3.5 text-gray-500" />
+                <MdMessage size={18} className="absolute left-3 top-3.5 text-slate-400 dark:text-gray-500" />
                 <textarea
                   name="message"
                   placeholder="Your message"
