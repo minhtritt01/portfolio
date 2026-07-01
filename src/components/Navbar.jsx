@@ -31,22 +31,22 @@ const panelVariants = {
   hidden: { x: "100%" },
   visible: {
     x: 0,
-    transition: { type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+    transition: { type: "spring", stiffness: 380, damping: 38, mass: 0.9 },
   },
   exit: {
     x: "100%",
-    transition: { type: "tween", duration: 0.25, ease: "easeIn" },
+    transition: { type: "tween", duration: 0.22, ease: "easeIn" },
   },
 };
 
 const listVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.08 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: 24 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.35, ease: "easeOut" } },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.2, ease: "easeOut" } },
 };
 
 const Navbar = () => {
@@ -140,7 +140,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={() => setNav(false)}
-              className="fixed inset-0 z-40 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-slate-900/60 dark:bg-black/80 md:hidden"
             />
             <motion.div
               key="panel"
@@ -148,11 +148,24 @@ const Navbar = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
+              style={{ willChange: "transform" }}
               className="z-50 fixed top-0 right-0 bottom-0 w-[82vw] max-w-sm shadow-2xl md:hidden flex flex-col overflow-hidden bg-white dark:bg-[#0b0b16] border-l border-slate-200 dark:border-white/10"
             >
-              {/* Decorative glow */}
-              <div className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-500/20 blur-3xl" />
-              <div className="pointer-events-none absolute bottom-0 -left-16 w-48 h-48 rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-400/10 blur-3xl" />
+              {/* Decorative glow (plain gradients, no filter — cheap to composite while animating) */}
+              <div
+                className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full opacity-70 dark:opacity-50"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(34,211,238,0.35) 0%, rgba(34,211,238,0) 70%)",
+                }}
+              />
+              <div
+                className="pointer-events-none absolute bottom-0 -left-16 w-48 h-48 rounded-full opacity-60 dark:opacity-40"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(59,130,246,0) 70%)",
+                }}
+              />
 
               {/* Header */}
               <div className="relative flex items-center justify-between px-6 pt-6 pb-4 border-b border-slate-200 dark:border-white/10">
