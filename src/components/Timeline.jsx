@@ -31,8 +31,6 @@ const jobs = [
         bullets: [
           "Built cross-platform loyalty & banking features (iOS & Android).",
           "Integrated multi-partner APIs for point conversion & tier management (Sky+, Gold Plus).",
-          "Implemented Firebase FCM push and deep linking for personalized engagement.",
-          "Owned CI/CD (Jenkins + Fastlane) for automated App Store & Google Play releases; contributed to the web portal.",
         ],
       },
     ],
