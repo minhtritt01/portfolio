@@ -7,11 +7,13 @@ import Contact from './components/Contact';
 import Portfolio from './components/Portfolio';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
+import ContactPopup from './components/ContactPopup';
 import { useEffect, useState } from 'react';
 import loadinggif from './assets/loading.gif';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -27,32 +29,35 @@ function App() {
     loadData();
   }, [loading]);
   return (
-    <ThemeProvider>
-      <div>
-        {loading ? (
-          <div className='w-full h-screen flex justify-center items-center bg-gradient-to-b from-black to-gray-800'>
-            <img
-              src={loadinggif}
-              className='w-[150px] h-[150px]'
-              alt='loading-gif'
-            />
-          </div>
-        ) : (
-          <>
-            <Navbar />
-            <Home />
-            <About />
-            <Timeline />
-            <Portfolio />
-            <Experience />
-            <Contact />
-            <Footer />
-            <SocialLinks />
-            <ToastContainer />
-          </>
-        )}
-      </div>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <div>
+          {loading ? (
+            <div className='w-full h-screen flex justify-center items-center bg-gradient-to-b from-black to-gray-800'>
+              <img
+                src={loadinggif}
+                className='w-[150px] h-[150px]'
+                alt='loading-gif'
+              />
+            </div>
+          ) : (
+            <>
+              <Navbar />
+              <Home />
+              <About />
+              <Timeline />
+              <Portfolio />
+              <Experience />
+              <Contact />
+              <Footer />
+              <SocialLinks />
+              <ContactPopup />
+              <ToastContainer />
+            </>
+          )}
+        </div>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

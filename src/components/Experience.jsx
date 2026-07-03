@@ -28,6 +28,7 @@ import fastlaneIcon from "../assets/fastlane.svg";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const categories = [
   {
@@ -110,6 +111,7 @@ const SkillCard = ({ src, title, glow, badge, index }) => (
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
 
   return (
     <div
@@ -125,10 +127,10 @@ const Experience = () => {
           className="mb-12"
         >
           <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Skills
+            {t("experience.heading")}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-slate-500 dark:text-gray-400 mt-4">Technologies I work with</p>
+          <p className="text-slate-500 dark:text-gray-400 mt-4">{t("experience.subheading")}</p>
         </motion.div>
 
         <div className="flex flex-col gap-12">
@@ -142,18 +144,23 @@ const Experience = () => {
             >
               <div className="flex items-center gap-3 mb-5">
                 <span className={`text-sm font-semibold uppercase tracking-widest bg-gradient-to-r ${cat.color} bg-clip-text text-transparent`}>
-                  {cat.label}
+                  {t(`experience.categories.${cat.label}`)}
                 </span>
                 <div className={`flex-1 h-px bg-gradient-to-r ${cat.color} opacity-30`} />
                 {cat.label === "AI Tools" && (
                   <span className="text-xs px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-500/20 text-violet-600 dark:text-violet-300 border border-violet-300 dark:border-violet-500/30">
-                    Daily workflow
+                    {t("experience.dailyWorkflow")}
                   </span>
                 )}
               </div>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                 {cat.techs.map((tech, ti) => (
-                  <SkillCard key={tech.title} {...tech} index={ti} />
+                  <SkillCard
+                    key={tech.title}
+                    {...tech}
+                    badge={tech.badge ? t(`experience.badges.${tech.badge}`) : undefined}
+                    index={ti}
+                  />
                 ))}
               </div>
             </motion.div>

@@ -1,154 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { FaBriefcase, FaCalendarAlt } from "react-icons/fa";
-
-const jobs = [
-  {
-    company: "Galaxy Technology Services",
-    role: "Software Engineer",
-    period: "Apr 2026 – Present",
-    current: true,
-    projects: [
-      {
-        name: "SkyJoy",
-        period: "4/2026 – Present · Team 30",
-        description:
-          "A loyalty & banking app — SkyPoint accumulation, redemption across 250+ brands, and an integrated wallet (SkyPay / Galaxy Pay). Partners: VPBank YOYO, HDBank, Vikki, HD Insurance, Furama Resort, bTaskee.",
-        tech: [
-          "Flutter",
-          "Dart",
-          "Bloc",
-          "flutter_bloc",
-          "go_router",
-          "Clean Architecture",
-          "get_it",
-          "injectable",
-          "Adjust SDK",
-          "Firebase FCM & Analytics",
-          "Jenkins",
-          "Fastlane",
-        ],
-        bullets: [
-          "Built cross-platform loyalty & banking features (iOS & Android).",
-          "Integrated multi-partner APIs for point conversion & tier management (Sky+, Gold Plus).",
-        ],
-      },
-    ],
-  },
-  {
-    company: "Quoc Viet Trading and Engineering Co., Ltd",
-    role: "Software Engineer",
-    period: "Oct 2024 – Apr 2026",
-    projects: [
-      {
-        name: "Syrup Mixing System",
-        period: "5/2025 – 4/2026 · Team 10",
-        description:
-          "Web & cross-platform system for Suntory PepsiCo factories that automates the syrup mixing process — accurate ingredient control, batch tracking, and efficient production operations.",
-        tech: [
-          "Flutter",
-          "Dart",
-          "Bloc",
-          "go_router",
-          "Clean Architecture",
-          "get_it",
-          "dio",
-          "drift",
-          "REST",
-          "excel",
-          "pdf",
-          "printing",
-          "zebra/QR Code",
-          "rxdart",
-          "Jenkins",
-          "Fastlane",
-          "MSIX",
-        ],
-        bullets: [],
-      },
-      {
-        name: "Smart Form Interface",
-        period: "10/2024 – 4/2025 · Team 10",
-        description:
-          "Multi-platform solution streamlining report generation through digitized forms, automated workflows, and operational data visualization.",
-        tech: [
-          "Flutter",
-          "Dart",
-          "Bloc",
-          "go_router",
-          "Clean Architecture",
-          "get_it",
-          "dio",
-          "drift",
-          "REST",
-          "excel",
-          "rxdart",
-          "Jenkins",
-          "Fastlane",
-          "MSIX",
-        ],
-        bullets: [
-          "Release management: owned merging, versioning & publishing to App Store, Google Play, Microsoft Store; mentored 1 developer.",
-          "CI/CD & DevOps: built and maintained Jenkins / Fastlane / PowerShell pipelines for automated testing & deployment.",
-          "Quality & stakeholders: wrote unit tests for stability; ran onsite user training and gathered requirements directly with clients.",
-        ],
-      },
-    ],
-  },
-  {
-    company: "Onsky Health International",
-    role: "Software Engineer",
-    period: "Jan 2023 – Oct 2024",
-    projects: [
-      {
-        name: "Onsky SkyHealth",
-        period: "1/2023 – 10/2024 · Team 9",
-        description:
-          "Healthcare monitoring mobile app for remote patient & child observation, integrating IoT device management and live camera streaming.",
-        tech: [
-          "Android Native (Java/Kotlin)",
-          "Flutter (Add-to-App)",
-          "Retrofit",
-          "MQTT",
-          "REST",
-          "VStarCam camera SDK",
-          "Firebase",
-          "WebView",
-        ],
-        bullets: [
-          "Native Android: maintained & optimized the codebase, resolving complex issues for app stability.",
-          "Camera integration: integrated specialized third-party SDKs (VStarCam) for robust live streaming and remote control.",
-          "Hybrid architecture: embedded Flutter modules into the native Android app.",
-        ],
-      },
-      {
-        name: "Onsky SkyCare",
-        period: "1/2023 – 10/2024 · Team 9",
-        description:
-          "Web & mobile apps integrated with IoT medical devices for healthcare monitoring and device management.",
-        tech: [
-          "Flutter",
-          "Dart",
-          "Provider",
-          "go_router",
-          "HTTP",
-          "Chopper",
-          "MQTT",
-          "WebSocket",
-          "Firebase",
-          "Push",
-          "fl_chart",
-          "Fastlane",
-          "CI/CD",
-        ],
-        bullets: [
-          "Feature development: delivered mobile features in Flutter; authored unit tests and built CI/CD pipelines.",
-          "Release management: managed end-to-end publishing to Google Play and the App Store.",
-        ],
-      },
-    ],
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const ProjectCard = ({ project, index }) => (
   <motion.div
@@ -199,6 +52,7 @@ const ProjectCard = ({ project, index }) => (
 const JobEntry = ({ job, index, isLast }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useTranslation();
 
   return (
     <div ref={ref} className="relative pl-10 sm:pl-14">
@@ -245,7 +99,7 @@ const JobEntry = ({ job, index, isLast }) => {
             {job.period}
             {job.current && (
               <span className="ml-1 px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30 text-[10px] uppercase tracking-wide">
-                Current
+                {t("timeline.current")}
               </span>
             )}
           </span>
@@ -264,6 +118,8 @@ const JobEntry = ({ job, index, isLast }) => {
 const Timeline = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
+  const jobs = t("timeline.jobs", { returnObjects: true });
 
   return (
     <div
@@ -279,11 +135,11 @@ const Timeline = () => {
           className="mb-12"
         >
           <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Work Experience
+            {t("timeline.heading")}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
           <p className="text-slate-500 dark:text-gray-400 mt-4">
-            My career timeline
+            {t("timeline.subheading")}
           </p>
         </motion.div>
 

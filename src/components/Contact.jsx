@@ -4,17 +4,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { BsFacebook } from "react-icons/bs";
 import { MdPerson, MdEmail, MdMessage } from "react-icons/md";
-
-const validationSchema = yup.object({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("Enter a valid email").required("Email is required"),
-  message: yup.string().required("Message is required"),
-});
 
 const socialLinks = [
   { icon: <FaLinkedin size={20} />, href: "https://www.linkedin.com/in/minhtritt01/", label: "LinkedIn" },
@@ -26,10 +21,25 @@ const socialLinks = [
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
+
+  const validationSchema = useMemo(
+    () =>
+      yup.object({
+        name: yup.string().required(t("contact.form.errors.nameRequired")),
+        email: yup
+          .string()
+          .email(t("contact.form.errors.emailInvalid"))
+          .required(t("contact.form.errors.emailRequired")),
+        message: yup.string().required(t("contact.form.errors.messageRequired")),
+      }),
+    [t]
+  );
 
   const formik = useFormik({
     initialValues: { email: "", name: "", message: "" },
     validationSchema,
+    enableReinitialize: true,
   });
 
   const onSubmit = async (e) => {
@@ -40,12 +50,12 @@ const Contact = () => {
         { name: formik.values.name, email: formik.values.email, message: formik.values.message },
         { headers: { Accept: "application/json" } }
       );
-      toast.success("Message sent! I'll get back to you soon.", {
+      toast.success(t("contact.form.successToast"), {
         position: toast.POSITION.TOP_CENTER,
       });
       formik.resetForm();
     } catch {
-      toast.error("Something went wrong. Please try again.", {
+      toast.error(t("contact.form.errorToast"), {
         position: toast.POSITION.TOP_CENTER,
       });
     }
@@ -69,10 +79,10 @@ const Contact = () => {
           className="mb-10"
         >
           <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Contact
+            {t("contact.heading")}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-slate-500 dark:text-gray-400 mt-4">Have a project in mind? Let's talk.</p>
+          <p className="text-slate-500 dark:text-gray-400 mt-4">{t("contact.subheading")}</p>
         </motion.div>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start">
@@ -84,9 +94,9 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="hidden md:block">
-              <h3 className="text-xl font-semibold mb-2 text-slate-800 dark:text-white">Get in touch</h3>
+              <h3 className="text-xl font-semibold mb-2 text-slate-800 dark:text-white">{t("contact.getInTouch")}</h3>
               <p className="text-slate-500 dark:text-gray-400 leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, or just a friendly chat.
+                {t("contact.intro")}
               </p>
             </div>
 
@@ -134,7 +144,7 @@ const Contact = () => {
                   id="name"
                   type="text"
                   name="name"
-                  placeholder="Your name"
+                  placeholder={t("contact.form.namePlaceholder")}
                   className={inputClass}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -150,7 +160,7 @@ const Contact = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your email"
+                  placeholder={t("contact.form.emailPlaceholder")}
                   className={inputClass}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -165,7 +175,7 @@ const Contact = () => {
                 <MdMessage size={18} className="absolute left-3 top-3.5 text-slate-400 dark:text-gray-500" />
                 <textarea
                   name="message"
-                  placeholder="Your message"
+                  placeholder={t("contact.form.messagePlaceholder")}
                   rows="6"
                   className={`${inputClass} resize-none`}
                   onChange={formik.handleChange}
@@ -182,7 +192,7 @@ const Contact = () => {
                 disabled={!formik.dirty || !formik.isValid}
                 className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Send Message
+                {t("contact.form.send")}
               </button>
             </form>
           </motion.div>

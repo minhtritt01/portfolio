@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import teampower from "../assets/portfolio/teampower.png";
 import dashboard from "../assets/portfolio/dashboard.png";
 import spotifyFlutter from "../assets/portfolio/spotify_flutter.png";
@@ -173,6 +174,7 @@ const IconApple = () => (
 const Portfolio = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
 
   return (
     <div
@@ -188,11 +190,11 @@ const Portfolio = () => {
           className="pb-12"
         >
           <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Portfolio
+            {t("portfolio.heading")}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
           <p className="text-slate-500 dark:text-gray-400 mt-4">
-            A selection of my latest projects
+            {t("portfolio.subheading")}
           </p>
         </motion.div>
 
@@ -214,7 +216,7 @@ const Portfolio = () => {
                 {/* Category badge */}
                 <div className="absolute top-3 left-3 z-10">
                   <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-white/80 dark:bg-black/60 border border-slate-200 dark:border-white/10 text-cyan-600 dark:text-cyan-300 backdrop-blur-sm">
-                    {project.category}
+                    {t(`portfolio.categories.${project.category}`)}
                   </span>
                 </div>
 
@@ -249,7 +251,7 @@ const Portfolio = () => {
                       {project.title}
                     </h3>
                     <p className="text-slate-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-2">
-                      {project.description}
+                      {t(`portfolio.projects.${project.title}`)}
                     </p>
                   </div>
 
@@ -274,7 +276,7 @@ const Portfolio = () => {
                             onClick={() => window.open(project.demo, "_blank")}
                             className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/30"
                           >
-                            <IconEye /> Demo
+                            <IconEye /> {t("portfolio.demo")}
                           </button>
                         )}
                         {project.code && (
@@ -282,7 +284,7 @@ const Portfolio = () => {
                             onClick={() => window.open(project.code, "_blank")}
                             className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20 text-slate-600 dark:text-gray-300 transition-all duration-200"
                           >
-                            <IconGithub /> Code
+                            <IconGithub /> {t("portfolio.code")}
                           </button>
                         )}
                       </div>
@@ -296,7 +298,7 @@ const Portfolio = () => {
                             }
                             className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white transition-all duration-300 hover:shadow-md hover:shadow-green-500/30"
                           >
-                            <IconAndroid /> Android
+                            <IconAndroid /> {t("portfolio.android")}
                           </button>
                         )}
                         {project.ios && (
@@ -304,7 +306,7 @@ const Portfolio = () => {
                             onClick={() => window.open(project.ios, "_blank")}
                             className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20 text-slate-600 dark:text-gray-300 transition-all duration-200"
                           >
-                            <IconApple /> iOS
+                            <IconApple /> {t("portfolio.ios")}
                           </button>
                         )}
                       </div>

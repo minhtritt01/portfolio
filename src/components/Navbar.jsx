@@ -15,16 +15,18 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { Link } from "react-scroll";
+import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.svg";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const links = [
-  { id: 1, link: "home", label: "Home", icon: FaHome },
-  { id: 2, link: "about", label: "About", icon: FaUser },
-  { id: 3, link: "work", label: "Work", icon: FaBriefcase },
-  { id: 4, link: "portfolio", label: "Portfolio", icon: FaImages },
-  { id: 5, link: "experience", label: "Skills", icon: FaCode },
-  { id: 6, link: "contact", label: "Contact", icon: FaEnvelope },
+  { id: 1, link: "home", icon: FaHome },
+  { id: 2, link: "about", icon: FaUser },
+  { id: 3, link: "work", icon: FaBriefcase },
+  { id: 4, link: "portfolio", icon: FaImages },
+  { id: 5, link: "experience", icon: FaCode },
+  { id: 6, link: "contact", icon: FaEnvelope },
 ];
 
 const panelVariants = {
@@ -54,6 +56,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
   const { dark, toggle } = useTheme();
+  const { lang, toggle: toggleLang } = useLanguage();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -94,13 +98,13 @@ const Navbar = () => {
               duration={500}
               spy
               onSetActive={() => setActive(link)}
-              className={`relative px-4 py-2 cursor-pointer capitalize font-medium transition-colors duration-200 rounded-md group ${
+              className={`relative px-4 py-2 cursor-pointer font-medium transition-colors duration-200 rounded-md group ${
                 active === link
                   ? "text-cyan-500 dark:text-cyan-400"
                   : "text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-white"
               }`}
             >
-              {link}
+              {t(`navbar.${link}`)}
               <span
                 className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full transition-all duration-300 ${
                   active === link ? "w-4/5" : "w-0 group-hover:w-4/5"
@@ -113,8 +117,16 @@ const Navbar = () => {
 
       <div className="flex items-center gap-3">
         <button
+          onClick={toggleLang}
+          aria-label={t("navbar.toggleLanguage")}
+          className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/10 transition-all duration-200"
+        >
+          {lang === "en" ? "VI" : "EN"}
+        </button>
+
+        <button
           onClick={toggle}
-          aria-label="Toggle theme"
+          aria-label={t("navbar.toggleTheme")}
           className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/10 transition-all duration-200"
         >
           {dark ? <FaSun size={18} /> : <FaMoon size={18} />}
@@ -123,7 +135,7 @@ const Navbar = () => {
         <button
           onClick={() => setNav(true)}
           className="cursor-pointer text-slate-500 dark:text-gray-400 md:hidden p-2 -mr-2"
-          aria-label="Open menu"
+          aria-label={t("navbar.openMenu")}
         >
           <FaBars size={22} />
         </button>
@@ -177,7 +189,7 @@ const Navbar = () => {
                 <button
                   className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors duration-200"
                   onClick={() => setNav(false)}
-                  aria-label="Close menu"
+                  aria-label={t("navbar.closeMenu")}
                 >
                   <FaTimes size={18} />
                 </button>
@@ -190,7 +202,7 @@ const Navbar = () => {
                 animate="visible"
                 className="relative flex-1 flex flex-col gap-1.5 px-4 py-6 overflow-y-auto"
               >
-                {links.map(({ link, id, label, icon: Icon }) => {
+                {links.map(({ link, id, icon: Icon }) => {
                   const isActive = active === link;
                   return (
                     <motion.li key={id} variants={itemVariants}>
@@ -216,7 +228,7 @@ const Navbar = () => {
                         >
                           <Icon size={15} />
                         </span>
-                        <span className="text-base">{label}</span>
+                        <span className="text-base">{t(`navbar.${link}`)}</span>
                       </Link>
                     </motion.li>
                   );
@@ -232,8 +244,15 @@ const Navbar = () => {
                   onClick={() => setNav(false)}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/30 transition-all duration-300 cursor-pointer"
                 >
-                  Let's talk
+                  {t("navbar.letsTalk")}
                 </Link>
+                <button
+                  onClick={toggleLang}
+                  aria-label={t("navbar.toggleLanguage")}
+                  className="flex items-center justify-center gap-1.5 w-full mt-3 py-2 rounded-xl text-sm font-semibold text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-50 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10 transition-all duration-200"
+                >
+                  {lang === "en" ? "Tiếng Việt (VI)" : "English (EN)"}
+                </button>
                 <div className="flex items-center justify-center gap-4 mt-4">
                   <a
                     href="https://github.com/minhtritt01"

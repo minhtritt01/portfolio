@@ -1,9 +1,11 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <footer className="bg-white dark:bg-black border-t border-slate-200 dark:border-gray-800 py-8 text-slate-400 dark:text-gray-500">
@@ -13,7 +15,7 @@ const Footer = () => {
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-semibold">
             Phan Minh Tri
           </span>
-          . All rights reserved.
+          . {t("footer.rights")}
         </p>
 
         <div className="flex gap-4">

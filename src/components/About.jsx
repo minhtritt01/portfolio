@@ -2,6 +2,7 @@ import HeroImage from "../assets/heroImage.png";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const StatCounter = ({ end, label, suffix = "+" }) => {
   const [count, setCount] = useState(0);
@@ -35,6 +36,7 @@ const StatCounter = ({ end, label, suffix = "+" }) => {
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useTranslation();
 
   return (
     <div
@@ -50,7 +52,7 @@ const About = () => {
           className="pb-10"
         >
           <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            About Me
+            {t("about.heading")}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
         </motion.div>
@@ -79,22 +81,16 @@ const About = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <p className="text-slate-600 dark:text-gray-300 text-lg leading-relaxed">
-              Software Engineer with 3+ years of experience specialising in
-              Flutter for cross-platform mobile, web, and desktop applications.
-              Strong expertise in Bloc/Provider, Clean Architecture, CI/CD
-              pipelines, and real-time systems (MQTT, WebSocket). Experienced
-              in Android Native (Kotlin/Java) and ReactJS. Actively leveraging
-              AI tools — Claude, ChatGPT, Cursor — to accelerate development
-              and improve code quality.
+              {t("about.bio")}
             </p>
 
             <div className="grid grid-cols-2 gap-4 text-base">
               {[
-                ["Name", "Phan Minh Tri"],
-                ["Location", "Ho Chi Minh City, VN"],
-                ["Email", "minhtritt01@gmail.com"],
-                ["Phone", "(+84) 834 790 997"],
-                ["Availability", "Open to work"],
+                [t("about.fields.name"), "Phan Minh Tri"],
+                [t("about.fields.location"), t("about.values.location")],
+                [t("about.fields.email"), "minhtritt01@gmail.com"],
+                [t("about.fields.phone"), "(+84) 834 790 997"],
+                [t("about.fields.availability"), t("about.values.availability")],
               ].map(([label, value]) => (
                 <div key={label} className="flex flex-col gap-0.5">
                   <span className="text-slate-400 dark:text-gray-500 text-sm uppercase tracking-wide">
@@ -111,7 +107,7 @@ const About = () => {
               rel="noreferrer"
               className="inline-flex w-fit mt-2 items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium py-3 px-6 rounded-lg shadow-lg shadow-cyan-500/30 transition-all duration-300"
             >
-              View Resume
+              {t("about.viewResume")}
             </a>
           </motion.div>
         </div>
@@ -123,9 +119,9 @@ const About = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <StatCounter end={3} label="Years Experience" />
-          <StatCounter end={10} label="Projects Shipped" />
-          <StatCounter end={3} label="App Stores" />
+          <StatCounter end={3} label={t("about.stats.years")} />
+          <StatCounter end={10} label={t("about.stats.projects")} />
+          <StatCounter end={3} label={t("about.stats.stores")} />
         </motion.div>
       </div>
     </div>
