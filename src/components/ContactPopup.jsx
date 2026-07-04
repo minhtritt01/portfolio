@@ -6,7 +6,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { BsChatDotsFill, BsFillPersonLinesFill } from "react-icons/bs";
 
 const SESSION_KEY = "visitorPopupShown";
-const DELAY_MS = 45000;
+const DELAY_MS = 15000;
 
 const trackEvent = (name, params) => {
   if (typeof window.gtag === "function") {
