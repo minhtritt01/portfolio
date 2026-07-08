@@ -48,20 +48,20 @@ const ContactPopup = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-4 right-4 z-50 w-[90vw] max-w-sm rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0b0b16] shadow-2xl p-5 sm:p-6"
+            className="fixed bottom-4 right-4 z-50 w-[90vw] max-w-sm rounded-2xl border border-border bg-card shadow-2xl p-5 sm:p-6"
           >
             <button
               onClick={() => setOpen(false)}
               aria-label={t("popup.close")}
-              className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 dark:text-gray-500 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors duration-200"
+              className="absolute top-3 right-3 p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
             >
               <FaTimes size={16} />
             </button>
 
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white pr-6 mb-2">
+            <h3 className="font-display text-lg font-bold text-foreground pr-6 mb-2">
               {t("popup.heading")}
             </h3>
-            <p className="text-sm text-slate-500 dark:text-gray-400 leading-relaxed mb-4">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               {t("popup.body")}
             </p>
 
@@ -69,7 +69,7 @@ const ContactPopup = () => {
               <a
                 href="mailto:minhtritt01@gmail.com"
                 onClick={() => handleCtaClick("email")}
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white transition-all duration-300"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium bg-gradient-theme-r text-primary-foreground transition-all duration-300"
               >
                 <HiOutlineMail size={16} /> {t("popup.emailCta")}
               </a>
@@ -78,7 +78,7 @@ const ContactPopup = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => handleCtaClick("linkedin")}
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-300 transition-all duration-200"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium bg-muted/60 hover:bg-muted border border-border text-foreground/80 transition-all duration-200"
               >
                 <FaLinkedin size={16} /> {t("popup.linkedinCta")}
               </a>
@@ -88,7 +88,7 @@ const ContactPopup = () => {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => handleCtaClick("whatsapp")}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-300 transition-all duration-200"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-lg text-sm font-medium bg-muted/60 hover:bg-muted border border-border text-foreground/80 transition-all duration-200"
                 >
                   <FaWhatsapp size={16} /> {t("popup.whatsappCta")}
                 </a>
@@ -97,7 +97,7 @@ const ContactPopup = () => {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => handleCtaClick("zalo")}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-300 transition-all duration-200"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-lg text-sm font-medium bg-muted/60 hover:bg-muted border border-border text-foreground/80 transition-all duration-200"
                 >
                   <BsChatDotsFill size={16} /> {t("popup.zaloCta")}
                 </a>
@@ -106,7 +106,7 @@ const ContactPopup = () => {
                 href="./PhanMinhTri_CV.pdf"
                 download
                 onClick={() => handleCtaClick("cv")}
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-300 transition-all duration-200"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium bg-muted/60 hover:bg-muted border border-border text-foreground/80 transition-all duration-200"
               >
                 <BsFillPersonLinesFill size={16} /> {t("popup.cvCta")}
               </a>

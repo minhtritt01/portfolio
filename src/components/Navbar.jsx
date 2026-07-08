@@ -78,7 +78,7 @@ const Navbar = () => {
       <nav
         className={`flex md:hidden justify-between items-center w-full h-20 px-6 fixed z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/90 dark:bg-black/60 backdrop-blur-md shadow-lg shadow-slate-200/60 dark:shadow-black/40"
+            ? "bg-card/90 backdrop-blur-md shadow-lg shadow-black/10 dark:shadow-black/40"
             : "bg-transparent backdrop-blur-none"
         }`}
       >
@@ -94,7 +94,7 @@ const Navbar = () => {
           <button
             onClick={toggleLang}
             aria-label={t("navbar.toggleLanguage")}
-            className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/10 transition-all duration-200"
+            className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
           >
             {lang === "en" ? "VI" : "EN"}
           </button>
@@ -102,14 +102,14 @@ const Navbar = () => {
           <button
             onClick={toggle}
             aria-label={t("navbar.toggleTheme")}
-            className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/10 transition-all duration-200"
+            className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
           >
             {dark ? <FaSun size={18} /> : <FaMoon size={18} />}
           </button>
 
           <button
             onClick={() => setNav(true)}
-            className="cursor-pointer text-slate-500 dark:text-gray-400 p-2 -mr-2"
+            className="cursor-pointer text-muted-foreground p-2 -mr-2"
             aria-label={t("navbar.openMenu")}
           >
             <FaBars size={22} />
@@ -122,7 +122,7 @@ const Navbar = () => {
         <button
           onClick={toggleLang}
           aria-label={t("navbar.toggleLanguage")}
-          className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/10 transition-all duration-200"
+          className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
         >
           {lang === "en" ? "VI" : "EN"}
         </button>
@@ -130,7 +130,7 @@ const Navbar = () => {
         <button
           onClick={toggle}
           aria-label={t("navbar.toggleTheme")}
-          className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/10 transition-all duration-200"
+          className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
         >
           {dark ? <FaSun size={18} /> : <FaMoon size={18} />}
         </button>
@@ -146,7 +146,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={() => setNav(false)}
-              className="fixed inset-0 z-40 bg-slate-900/60 dark:bg-black/80 md:hidden"
+              className="fixed inset-0 z-40 bg-foreground/60 md:hidden"
             />
             <motion.div
               key="panel"
@@ -155,33 +155,33 @@ const Navbar = () => {
               animate="visible"
               exit="exit"
               style={{ willChange: "transform" }}
-              className="z-50 fixed top-0 right-0 bottom-0 w-[82vw] max-w-sm shadow-2xl md:hidden flex flex-col overflow-hidden bg-white dark:bg-[#0b0b16] border-l border-slate-200 dark:border-white/10"
+              className="z-50 fixed top-0 right-0 bottom-0 w-[82vw] max-w-sm shadow-2xl md:hidden flex flex-col overflow-hidden bg-card border-l border-border"
             >
               {/* Decorative glow (plain gradients, no filter — cheap to composite while animating) */}
               <div
                 className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full opacity-70 dark:opacity-50"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(34,211,238,0.35) 0%, rgba(34,211,238,0) 70%)",
+                    "radial-gradient(circle, hsl(var(--gradient-from) / 0.35) 0%, hsl(var(--gradient-from) / 0) 70%)",
                 }}
               />
               <div
                 className="pointer-events-none absolute bottom-0 -left-16 w-48 h-48 rounded-full opacity-60 dark:opacity-40"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(59,130,246,0) 70%)",
+                    "radial-gradient(circle, hsl(var(--gradient-to) / 0.3) 0%, hsl(var(--gradient-to) / 0) 70%)",
                 }}
               />
 
               {/* Header */}
-              <div className="relative flex items-center justify-between px-6 pt-6 pb-4 border-b border-slate-200 dark:border-white/10">
+              <div className="relative flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
                 <img
                   src={logo}
                   alt="Tri Dev"
                   className="h-7 w-auto invert dark:invert-0"
                 />
                 <button
-                  className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors duration-200"
+                  className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
                   onClick={() => setNav(false)}
                   aria-label={t("navbar.closeMenu")}
                 >
@@ -209,15 +209,15 @@ const Navbar = () => {
                         onClick={() => setNav(false)}
                         className={`group relative flex items-center gap-3.5 py-3.5 pl-4 pr-3 rounded-xl font-medium transition-all duration-200 cursor-pointer ${
                           isActive
-                            ? "text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-md shadow-cyan-500/30"
-                            : "text-slate-600 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-white/5"
+                            ? "text-primary-foreground bg-gradient-theme-r shadow-md shadow-primary/30"
+                            : "text-foreground/80 hover:bg-muted"
                         }`}
                       >
                         <span
                           className={`flex items-center justify-center w-9 h-9 rounded-lg shrink-0 transition-colors duration-200 ${
                             isActive
                               ? "bg-white/20"
-                              : "bg-slate-100 dark:bg-white/5 text-cyan-500 dark:text-cyan-400 group-hover:bg-cyan-50 dark:group-hover:bg-cyan-400/10"
+                              : "bg-muted text-primary group-hover:bg-primary/10"
                           }`}
                         >
                           <Icon size={15} />
@@ -230,20 +230,20 @@ const Navbar = () => {
               </motion.ul>
 
               {/* Footer */}
-              <div className="relative px-6 py-5 border-t border-slate-200 dark:border-white/10">
+              <div className="relative px-6 py-5 border-t border-border">
                 <Link
                   to="contact"
                   smooth
                   duration={500}
                   onClick={() => setNav(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/30 transition-all duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-primary-foreground bg-gradient-theme-r shadow-lg shadow-primary/30 transition-all duration-300 cursor-pointer"
                 >
                   {t("navbar.letsTalk")}
                 </Link>
                 <button
                   onClick={toggleLang}
                   aria-label={t("navbar.toggleLanguage")}
-                  className="flex items-center justify-center gap-1.5 w-full mt-3 py-2 rounded-xl text-sm font-semibold text-slate-500 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-50 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10 transition-all duration-200"
+                  className="flex items-center justify-center gap-1.5 w-full mt-3 py-2 rounded-xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-muted border border-border transition-all duration-200"
                 >
                   {lang === "en" ? "Tiếng Việt (VI)" : "English (EN)"}
                 </button>
@@ -253,7 +253,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="GitHub"
-                    className="text-slate-400 dark:text-gray-500 hover:text-slate-800 dark:hover:text-white transition-colors duration-200"
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     <FaGithub size={18} />
                   </a>
@@ -262,7 +262,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="LinkedIn"
-                    className="text-slate-400 dark:text-gray-500 hover:text-slate-800 dark:hover:text-white transition-colors duration-200"
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     <FaLinkedin size={18} />
                   </a>

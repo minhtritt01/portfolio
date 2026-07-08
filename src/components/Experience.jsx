@@ -26,9 +26,8 @@ import antigravityIcon from "../assets/antigravity-icon__full-color.png";
 import jenkinsIcon from "../assets/jenkins.svg";
 import fastlaneIcon from "../assets/fastlane.svg";
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import AnimatedSection from "./AnimatedSection";
 
 const categories = [
   {
@@ -90,16 +89,16 @@ const SkillCard = ({ src, title, glow, badge, index }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.4, delay: index * 0.05 }}
-    className={`relative flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-sm dark:shadow-none ${glow} hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default`}
+    className={`relative flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-border shadow-sm dark:shadow-none ${glow} hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-default`}
   >
     {src ? (
       <img src={src} alt={title} className="w-14 h-14 object-contain" />
     ) : (
-      <div className="w-14 h-14 rounded-xl bg-slate-200 dark:bg-white/10 border border-dashed border-slate-300 dark:border-white/20 flex items-center justify-center text-slate-400 dark:text-gray-500 text-xs text-center leading-tight px-1">
+      <div className="w-14 h-14 rounded-xl bg-muted border border-dashed border-border flex items-center justify-center text-muted-foreground text-xs text-center leading-tight px-1">
         {title}
       </div>
     )}
-    <p className="text-sm text-slate-600 dark:text-gray-300 font-medium text-center">{title}</p>
+    <p className="text-sm text-foreground/80 font-medium text-center">{title}</p>
     {badge && (
       <span className="absolute -top-2 -right-2 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-600 text-white shadow-md shadow-violet-900/60 leading-tight whitespace-nowrap">
         {badge}
@@ -109,29 +108,21 @@ const SkillCard = ({ src, title, glow, badge, index }) => (
 );
 
 const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { t } = useTranslation();
 
   return (
     <div
       name="experience"
-      className="bg-[#eaedfa] dark:bg-[#0d0d1a] dot-grid w-full min-h-screen py-20"
+      className="bg-muted/30 dot-grid w-full min-h-screen py-20"
     >
-      <div className="max-w-screen-lg mx-auto px-4 text-slate-800 dark:text-white">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+      <div className="max-w-5xl mx-auto px-4 text-foreground">
+        <AnimatedSection className="mb-12">
+          <h2 className="font-display text-4xl font-bold inline-block text-gradient-theme">
             {t("experience.heading")}
           </h2>
-          <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-slate-500 dark:text-gray-400 mt-4">{t("experience.subheading")}</p>
-        </motion.div>
+          <div className="h-1 w-16 bg-gradient-theme-r mt-2 rounded-full" />
+          <p className="text-muted-foreground mt-4">{t("experience.subheading")}</p>
+        </AnimatedSection>
 
         <div className="flex flex-col gap-12">
           {categories.map((cat, ci) => (

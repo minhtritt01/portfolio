@@ -8,11 +8,11 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-white dark:bg-black border-t border-slate-200 dark:border-gray-800 py-8 text-slate-400 dark:text-gray-500">
-      <div className="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="bg-background border-t border-border py-8 text-muted-foreground">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm">
           © {year}{" "}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-semibold">
+          <span className="text-gradient-theme font-display font-semibold">
             Phan Minh Tri
           </span>
           . {t("footer.rights")}
@@ -31,7 +31,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={label}
-              className="hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors duration-200"
+              className="hover:text-primary transition-colors duration-200"
             >
               {icon}
             </a>

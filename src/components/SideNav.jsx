@@ -18,7 +18,7 @@ const SideNav = () => {
   return (
     <nav className="hidden md:flex flex-col fixed left-16 lg:left-20 top-1/2 -translate-y-1/2 z-30">
       <ul className="relative flex flex-col gap-8">
-        <div className="absolute left-[5px] top-1 bottom-1 w-px bg-slate-300 dark:bg-white/15" />
+        <div className="absolute left-[5px] top-1 bottom-1 w-px bg-border" />
         {sections.map(({ id, link }) => {
           const isActive = active === link;
           return (
@@ -36,7 +36,7 @@ const SideNav = () => {
                   {isActive && (
                     <motion.span
                       layoutId="sideNavActiveGlow"
-                      className="absolute inset-[-6px] rounded-full bg-cyan-400/30 dark:bg-cyan-400/40 blur-[6px]"
+                      className="absolute inset-[-6px] rounded-full bg-primary/30 dark:bg-primary/40 blur-[6px]"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -45,16 +45,16 @@ const SideNav = () => {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     className={`block rounded-full w-[9px] h-[9px] transition-colors duration-300 ${
                       isActive
-                        ? "bg-cyan-400 shadow-[0_0_10px_2px_rgba(34,211,238,0.7)]"
-                        : "bg-slate-400 dark:bg-white/30 group-hover/side:bg-cyan-400"
+                        ? "bg-primary shadow-[0_0_10px_2px_hsl(var(--primary)/0.7)]"
+                        : "bg-muted-foreground/50 group-hover/side:bg-primary"
                     }`}
                   />
                 </span>
                 <span
                   className={`text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${
                     isActive
-                      ? "opacity-100 translate-x-0 text-cyan-500 dark:text-cyan-400"
-                      : "opacity-0 -translate-x-1 group-hover/side:opacity-70 group-hover/side:translate-x-0 text-slate-500 dark:text-gray-400"
+                      ? "opacity-100 translate-x-0 text-primary"
+                      : "opacity-0 -translate-x-1 group-hover/side:opacity-70 group-hover/side:translate-x-0 text-muted-foreground"
                   }`}
                 >
                   {t(`navbar.${link}`)}

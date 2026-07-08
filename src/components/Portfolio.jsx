@@ -1,6 +1,6 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import AnimatedSection from "./AnimatedSection";
 import teampower from "../assets/portfolio/teampower.png";
 import dashboard from "../assets/portfolio/dashboard.png";
 import spotifyFlutter from "../assets/portfolio/spotify_flutter.png";
@@ -172,31 +172,23 @@ const IconApple = () => (
 );
 
 const Portfolio = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { t } = useTranslation();
 
   return (
     <div
       name="portfolio"
-      className="bg-[#f4f7ff] dark:bg-[#060609] dot-grid w-full text-slate-800 dark:text-white min-h-screen py-20"
+      className="bg-background dot-grid w-full text-foreground min-h-screen py-20"
     >
       <div className="max-w-screen-xl px-6 mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="pb-12"
-        >
-          <h2 className="text-4xl font-bold inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        <AnimatedSection className="pb-12">
+          <h2 className="font-display text-4xl font-bold inline-block text-gradient-theme">
             {t("portfolio.heading")}
           </h2>
-          <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-500 mt-2 rounded-full" />
-          <p className="text-slate-500 dark:text-gray-400 mt-4">
+          <div className="h-1 w-16 bg-gradient-theme-r mt-2 rounded-full" />
+          <p className="text-muted-foreground mt-4">
             {t("portfolio.subheading")}
           </p>
-        </motion.div>
+        </AnimatedSection>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {portfolios.map((project, i) => (
@@ -209,20 +201,22 @@ const Portfolio = () => {
               transition={{ duration: 0.45, delay: i * 0.08 }}
             >
               {/* Glowing border layer */}
-              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-cyan-500/50 via-blue-600/30 to-cyan-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-theme opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]" />
 
               {/* Card */}
-              <div className="relative overflow-hidden rounded-2xl flex flex-col bg-white dark:bg-[rgba(255,255,255,0.06)] border border-slate-200 dark:border-white/[0.09] group-hover:border-transparent backdrop-blur-sm transition-colors duration-500 shadow-sm dark:shadow-none">
+              <div className="relative overflow-hidden rounded-2xl flex flex-col bg-card border border-border group-hover:border-transparent backdrop-blur-sm transition-colors duration-500 shadow-sm dark:shadow-none">
                 {/* Category badge */}
                 <div className="absolute top-3 left-3 z-10">
-                  <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-white/80 dark:bg-black/60 border border-slate-200 dark:border-white/10 text-cyan-600 dark:text-cyan-300 backdrop-blur-sm">
+                  <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-card/80 border border-border text-primary backdrop-blur-sm">
                     {t(`portfolio.categories.${project.category}`)}
                   </span>
                 </div>
 
-                {/* Image */}
+                {/* Image well: fixed light neutral regardless of theme — the
+                    screenshots/icons themselves are designed on a light
+                    background, so a dark well would create a hard edge in dark mode */}
                 <div
-                  className="relative overflow-hidden bg-slate-100 dark:bg-[#0a0a14] flex items-center justify-center"
+                  className="relative overflow-hidden bg-slate-100 flex items-center justify-center"
                   style={{ aspectRatio: "16/9" }}
                 >
                   {project.padded ? (
@@ -241,16 +235,16 @@ const Portfolio = () => {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col flex-1 p-5 gap-3">
                   <div>
-                    <h3 className="text-base font-bold text-slate-800 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300 mb-1">
+                    <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-1">
                       {project.title}
                     </h3>
-                    <p className="text-slate-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-2">
+                    <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
                       {t(`portfolio.projects.${project.title}`)}
                     </p>
                   </div>
@@ -260,7 +254,7 @@ const Portfolio = () => {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-[10px] rounded-md bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.08] text-slate-500 dark:text-gray-400"
+                        className="px-2 py-0.5 text-[10px] rounded-md bg-muted border border-border text-muted-foreground"
                       >
                         {tag}
                       </span>
@@ -274,7 +268,7 @@ const Portfolio = () => {
                         {project.demo && (
                           <button
                             onClick={() => window.open(project.demo, "_blank")}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/30"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-muted hover:bg-muted/70 border border-border text-foreground transition-all duration-200"
                           >
                             <IconEye /> {t("portfolio.demo")}
                           </button>
@@ -282,7 +276,7 @@ const Portfolio = () => {
                         {project.code && (
                           <button
                             onClick={() => window.open(project.code, "_blank")}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20 text-slate-600 dark:text-gray-300 transition-all duration-200"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-muted hover:bg-muted/70 border border-border text-foreground transition-all duration-200"
                           >
                             <IconGithub /> {t("portfolio.code")}
                           </button>
@@ -296,7 +290,7 @@ const Portfolio = () => {
                             onClick={() =>
                               window.open(project.android, "_blank")
                             }
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white transition-all duration-300 hover:shadow-md hover:shadow-green-500/30"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-muted hover:bg-muted/70 border border-border text-foreground transition-all duration-200"
                           >
                             <IconAndroid /> {t("portfolio.android")}
                           </button>
@@ -304,7 +298,7 @@ const Portfolio = () => {
                         {project.ios && (
                           <button
                             onClick={() => window.open(project.ios, "_blank")}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] border border-slate-200 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20 text-slate-600 dark:text-gray-300 transition-all duration-200"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium bg-muted hover:bg-muted/70 border border-border text-foreground transition-all duration-200"
                           >
                             <IconApple /> {t("portfolio.ios")}
                           </button>
