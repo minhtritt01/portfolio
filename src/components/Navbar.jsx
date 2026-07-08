@@ -16,7 +16,6 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
-import logo from "../assets/logo.svg";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -74,55 +73,18 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      {/* Mobile top bar: logo + utility buttons + hamburger. Desktop nav is handled by SideNav. */}
+      {/* Mobile top bar: floating iOS-style glass capsule. Desktop nav is handled by SideNav. */}
       <nav
-        className={`flex md:hidden justify-between items-center w-full h-20 px-6 fixed z-50 transition-all duration-300 ${
+        className={`md:hidden inline-flex items-center gap-1 fixed top-3 right-3 z-50 h-14 px-1.5 rounded-full border transition-all duration-300 ${
           scrolled
-            ? "bg-card/90 backdrop-blur-md shadow-lg shadow-black/10 dark:shadow-black/40"
-            : "bg-transparent backdrop-blur-none"
+            ? "bg-card/70 backdrop-blur-xl border-border/70 shadow-lg shadow-black/10 dark:shadow-black/40"
+            : "bg-card/40 backdrop-blur-lg border-border/40 shadow-sm"
         }`}
       >
-        <Link to="home" smooth duration={500} className="cursor-pointer">
-          <img
-            src={logo}
-            alt="Tri Dev"
-            className="h-8 w-auto invert dark:invert-0"
-          />
-        </Link>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={toggleLang}
-            aria-label={t("navbar.toggleLanguage")}
-            className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
-          >
-            {lang === "en" ? "VI" : "EN"}
-          </button>
-
-          <button
-            onClick={toggle}
-            aria-label={t("navbar.toggleTheme")}
-            className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
-          >
-            {dark ? <FaSun size={18} /> : <FaMoon size={18} />}
-          </button>
-
-          <button
-            onClick={() => setNav(true)}
-            className="cursor-pointer text-muted-foreground p-2 -mr-2"
-            aria-label={t("navbar.openMenu")}
-          >
-            <FaBars size={22} />
-          </button>
-        </div>
-      </nav>
-
-      {/* Desktop utility corner: SideNav covers section links, this keeps theme/language reachable */}
-      <div className="hidden md:flex items-center gap-2 fixed top-5 right-6 z-50">
         <button
           onClick={toggleLang}
           aria-label={t("navbar.toggleLanguage")}
-          className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
+          className="w-9 h-9 flex items-center justify-center rounded-full text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted active:scale-90 transition-all duration-150"
         >
           {lang === "en" ? "VI" : "EN"}
         </button>
@@ -130,7 +92,34 @@ const Navbar = () => {
         <button
           onClick={toggle}
           aria-label={t("navbar.toggleTheme")}
-          className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
+          className="w-9 h-9 flex items-center justify-center rounded-full text-muted-foreground hover:text-primary hover:bg-muted active:scale-90 transition-all duration-150"
+        >
+          {dark ? <FaSun size={16} /> : <FaMoon size={16} />}
+        </button>
+
+        <button
+          onClick={() => setNav(true)}
+          className="w-10 h-10 flex items-center justify-center rounded-full text-foreground bg-muted/70 active:scale-90 transition-all duration-150"
+          aria-label={t("navbar.openMenu")}
+        >
+          <FaBars size={16} />
+        </button>
+      </nav>
+
+      {/* Desktop utility corner: SideNav covers section links, this keeps theme/language reachable */}
+      <div className="hidden md:inline-flex items-center gap-1 fixed top-5 right-6 z-50 h-12 px-1.5 rounded-full border bg-card/70 backdrop-blur-xl border-border/70 shadow-lg shadow-black/10 dark:shadow-black/40">
+        <button
+          onClick={toggleLang}
+          aria-label={t("navbar.toggleLanguage")}
+          className="w-9 h-9 flex items-center justify-center rounded-full text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
+        >
+          {lang === "en" ? "VI" : "EN"}
+        </button>
+
+        <button
+          onClick={toggle}
+          aria-label={t("navbar.toggleTheme")}
+          className="w-9 h-9 flex items-center justify-center rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-200"
         >
           {dark ? <FaSun size={18} /> : <FaMoon size={18} />}
         </button>
@@ -155,7 +144,7 @@ const Navbar = () => {
               animate="visible"
               exit="exit"
               style={{ willChange: "transform" }}
-              className="z-50 fixed top-0 right-0 bottom-0 w-[82vw] max-w-sm shadow-2xl md:hidden flex flex-col overflow-hidden bg-card border-l border-border"
+              className="z-50 fixed top-2 right-2 bottom-2 w-[82vw] max-w-sm shadow-2xl md:hidden flex flex-col overflow-hidden rounded-3xl bg-card border border-border"
             >
               {/* Decorative glow (plain gradients, no filter — cheap to composite while animating) */}
               <div
@@ -174,12 +163,7 @@ const Navbar = () => {
               />
 
               {/* Header */}
-              <div className="relative flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-                <img
-                  src={logo}
-                  alt="Tri Dev"
-                  className="h-7 w-auto invert dark:invert-0"
-                />
+              <div className="relative flex items-center justify-end px-6 pt-6 pb-4 border-b border-border">
                 <button
                   className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
                   onClick={() => setNav(false)}
