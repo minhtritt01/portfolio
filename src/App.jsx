@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Contact from './components/Contact';
 import Portfolio from './components/Portfolio';
 import SocialLinks from './components/SocialLinks';
+import SideNav from './components/SideNav';
 import Footer from './components/Footer';
 import ContactPopup from './components/ContactPopup';
 import { useEffect, useState } from 'react';
@@ -51,6 +52,7 @@ function App() {
               <Contact />
               <Footer />
               <SocialLinks />
+              <SideNav />
               <ContactPopup />
               <ToastContainer />
             </>
