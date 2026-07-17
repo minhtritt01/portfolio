@@ -1,41 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Preloads (self-hosted, eliminates Google Fonts CDN) -->
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-  <title>Phan Minh Tri | Software Engineer</title>
-  <meta name="description" content="Software Engineer specialising in Flutter (mobile, web, desktop), React, and Android Native. 3+ years shipping apps on App Store, Google Play, and Microsoft Store." />
-  <meta name="author" content="Phan Minh Tri" />
-  <meta name="keywords" content="Flutter, React, Software Engineer, Mobile Developer, Android, iOS, Portfolio, Phan Minh Tri" />
+    <!-- Primary Meta Tags -->
+    <title>Phan Minh Tri | Software Engineer</title>
+    <meta name="title" content="Phan Minh Tri | Software Engineer" />
+    <meta
+      name="description"
+      content="Software Engineer specialising in Flutter (mobile, web, desktop), React, and Android Native. 3+ years shipping apps on App Store, Google Play, and Microsoft Store."
+    />
+    <meta name="author" content="Phan Minh Tri" />
+    <meta
+      name="keywords"
+      content="Flutter, React, Software Engineer, Mobile Developer, Android, iOS, Portfolio, Phan Minh Tri"
+    />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Phan Minh Tri | Software Engineer" />
-  <meta property="og:description" content="Software Engineer specialising in Flutter, React, and Android Native. 3+ years shipping cross-platform apps." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/avatar.png" />
+    <!-- Canonical & Alternate Languages -->
+    <link rel="canonical" href="https://phanminhtri.dev/" />
+    <link rel="alternate" hreflang="en" href="https://phanminhtri.dev/" />
+    <link rel="alternate" hreflang="vi" href="https://phanminhtri.dev/vi" />
+    <link rel="alternate" hreflang="x-default" href="https://phanminhtri.dev/" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Phan Minh Tri | Software Engineer" />
-  <meta name="twitter:description" content="Software Engineer specialising in Flutter, React, and Android Native." />
-  <meta name="twitter:image" content="/avatar.png" />
-</head>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://phanminhtri.dev/" />
+    <meta property="og:title" content="Phan Minh Tri | Software Engineer" />
+    <meta
+      property="og:description"
+      content="Software Engineer specialising in Flutter, React, and Android Native. 3+ years shipping cross-platform apps."
+    />
+    <meta property="og:image" content="https://phanminhtri.dev/avatar.png" />
+    <meta property="og:site_name" content="Phan Minh Tri" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="vi_VN" />
 
-<body>
-  <script>
-    (function () {
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored === 'dark' || (!stored && prefersDark)) {
-        document.documentElement.classList.add('dark');
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Phan Minh Tri | Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Software Engineer specialising in Flutter, React, and Android Native."
+    />
+    <meta name="twitter:image" content="https://phanminhtri.dev/avatar.png" />
+
+    <!-- Icons & theme -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://phanminhtri.dev/#website",
+            "url": "https://phanminhtri.dev/",
+            "name": "Phan Minh Tri",
+            "inLanguage": ["en", "vi"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://phanminhtri.dev/#person",
+            "name": "Phan Minh Tri",
+            "jobTitle": "Software Engineer",
+            "email": "minhtritt01@gmail.com",
+            "url": "https://phanminhtri.dev/",
+            "image": "https://phanminhtri.dev/avatar.png",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ho Chi Minh City",
+              "addressCountry": "VN"
+            },
+            "knowsAbout": ["Flutter", "Dart", "React", "Android", "Clean Architecture", "CI/CD"],
+            "sameAs": [
+              "https://github.com/minhtritt01",
+              "https://www.linkedin.com/in/minhtritt01/"
+            ]
+          }
+        ]
       }
-    })();
-  </script>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+    </script>
 
+    <!-- Theme detection before first paint (eliminates dark→light FOUC) -->
+    <script>
+      (function(){var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;var h=document.documentElement;h.classList.toggle('dark',d);h.classList.toggle('light',!d);var m=document.querySelector('meta[name="color-scheme"]');if(m)m.content=d?'dark':'light';var t=document.querySelector('meta[name="theme-color"]');if(t)t.content=d?'#0a0a0a':'#ffffff'})()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
