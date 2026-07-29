@@ -270,7 +270,8 @@ export const translations = {
       "QV Car": "Car management and booking mobile application with real-time tracking and service scheduling.",
       "SkyCare": "Healthcare platform connecting patients with caregivers for seamless remote care management.",
       "Spotify Flutter": "Full-featured Spotify clone with authentication, music playback, playlists, and cross-platform support.",
-      "Dashboard": "Admin dashboard with product management, sales charts, calendar integration, and e-commerce analytics."
+      "Dashboard": "Admin dashboard with product management, sales charts, calendar integration, and e-commerce analytics.",
+      "On Ma Tutu": "AI-automated content site — Claude Code & Cowork write a blog post every day, while Claude scripts and Remotion renders daily videos."
     },
     },
     tech: {
@@ -570,7 +571,8 @@ export const translations = {
       "QV Car": "Ứng dụng mobile quản lý và đặt xe với theo dõi thời gian thực và lên lịch dịch vụ.",
       "SkyCare": "Nền tảng chăm sóc sức khỏe kết nối bệnh nhân với người chăm sóc, quản lý chăm sóc từ xa liền mạch.",
       "Spotify Flutter": "Bản clone Spotify đầy đủ tính năng với xác thực, phát nhạc, playlist và hỗ trợ đa nền tảng.",
-      "Dashboard": "Dashboard quản trị với quản lý sản phẩm, biểu đồ doanh số, tích hợp lịch và phân tích thương mại điện tử."
+      "Dashboard": "Dashboard quản trị với quản lý sản phẩm, biểu đồ doanh số, tích hợp lịch và phân tích thương mại điện tử.",
+      "On Ma Tutu": "Trang nội dung tự động hoá bằng AI — Claude Code & Cowork viết blog mỗi ngày, Claude viết kịch bản và Remotion dựng video hàng ngày."
     },
     },
     tech: {
