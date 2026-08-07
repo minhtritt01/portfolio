@@ -26,6 +26,8 @@ import {
   UserCheck,
   SkipForward,
   List,
+  Youtube,
+  Smartphone,
 } from "lucide-react";
 import { translations, seo, type Lang } from "./i18n";
 import { useHomeSeo } from "./use-seo";
@@ -302,6 +304,7 @@ function useTypewriterRotation(
 const HOME_TOC_SECTIONS = [
   { id: "experience", en: "Experience", vi: "Kinh nghiệm" },
   { id: "projects", en: "Projects", vi: "Dự án" },
+  { id: "automation", en: "AI Automation", vi: "Tự động hoá AI" },
   { id: "tech", en: "Skills & Stack", vi: "Kỹ năng" },
   { id: "contact", en: "Contact", vi: "Liên hệ" },
 ] as const;
@@ -1749,6 +1752,59 @@ const PROJECTS: Project[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// AI automation — n8n workflows. Thumbnails come from each project's demo video;
+// copy lives in i18n under `automation.descriptions`.
+// ---------------------------------------------------------------------------
+type AutomationKey =
+  keyof (typeof translations)["en"]["automation"]["descriptions"];
+
+type AutomationProject = {
+  key: AutomationKey;
+  title: string;
+  src: string;
+  /** Swapped in when `src` 404s — YouTube only guarantees hqdefault. */
+  srcFallback: string;
+  tags: string[];
+  video: string;
+  code: string;
+};
+
+const ytThumb = (id: string) =>
+  `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+const ytThumbFallback = (id: string) =>
+  `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+
+const AUTOMATION_PROJECTS: AutomationProject[] = [
+  {
+    key: "AI Customer Support Agent",
+    title: "AI Customer Support Agent",
+    src: ytThumb("XMVXI0taIkg"),
+    srcFallback: ytThumbFallback("XMVXI0taIkg"),
+    tags: ["n8n", "AI Agent", "Supabase pgvector", "RAG", "Telegram"],
+    video: "https://youtu.be/XMVXI0taIkg",
+    code: "https://github.com/minhtritt01/ai_customer_support_agent",
+  },
+  {
+    key: "CV Screening Pipeline",
+    title: "CV Screening Pipeline",
+    src: ytThumb("kTIr_6UKvjk"),
+    srcFallback: ytThumbFallback("kTIr_6UKvjk"),
+    tags: ["n8n", "Gemini Vision", "Google Drive", "Sheets"],
+    video: "https://youtu.be/kTIr_6UKvjk",
+    code: "https://github.com/minhtritt01/n8n-cv-screening",
+  },
+  {
+    key: "AI Email Classifier",
+    title: "AI Email Classifier",
+    src: ytThumb("-wrGN9wu4Lg"),
+    srcFallback: ytThumbFallback("-wrGN9wu4Lg"),
+    tags: ["n8n", "Gemini", "Gmail API", "Sheets"],
+    video: "https://youtu.be/-wrGN9wu4Lg",
+    code: "https://github.com/minhtritt01/n8n-ai-email-classifier",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Tech stack — icons live here; category + badge labels live in i18n
 // ---------------------------------------------------------------------------
 type TechCategoryKey = keyof (typeof translations)["en"]["tech"]["categories"];
@@ -2182,6 +2238,104 @@ function App() {
                           label={t.projects.ios}
                         />
                       )}
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Automation */}
+      <section
+        id="automation"
+        className="py-16 md:py-24"
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "auto 1800px",
+        }}
+      >
+        <div className="max-w-5xl mx-auto px-6">
+          <AnimatedSection>
+            <h2 className="font-display text-2xl font-semibold flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-primary" />
+              </div>
+              {t.automation.title}
+            </h2>
+            <p className="text-muted-foreground mb-12 pl-13">
+              {t.automation.subtitle}
+            </p>
+          </AnimatedSection>
+
+          {/* How the automation work is built — frames the projects below */}
+          <div className="grid sm:grid-cols-3 gap-5 mb-12">
+            {t.automation.differentiators.map((d, i) => {
+              const Icon = [Code, BadgeCheck, Smartphone][i] ?? Code;
+              return (
+                <AnimatedSection key={d.title} delay={0.05 + i * 0.05}>
+                  <div className="h-full rounded-2xl bg-card border border-border p-5">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="font-display font-semibold mb-1.5">
+                      {d.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {d.body}
+                    </p>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-col gap-5">
+            {AUTOMATION_PROJECTS.map((p, i) => (
+              <AnimatedSection key={p.key} delay={0.05 + i * 0.05}>
+                <div className="grid md:grid-cols-[18rem_1fr] rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors duration-200 overflow-hidden group">
+                  {/* Video thumbnails assume a light backdrop — theme-independent */}
+                  <div className="bg-slate-100 overflow-hidden">
+                    <img
+                      src={p.src}
+                      alt={p.title}
+                      loading="lazy"
+                      onError={(e) => {
+                        const el = e.currentTarget;
+                        if (el.src !== p.srcFallback) el.src = p.srcFallback;
+                      }}
+                      className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="flex flex-col p-6">
+                    <h3 className="font-display font-semibold group-hover:text-primary transition-colors mb-1.5">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {t.automation.descriptions[p.key]}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {p.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 rounded-md bg-muted text-muted-foreground text-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      <ProjectLink
+                        href={p.video}
+                        icon={<Youtube className="w-3.5 h-3.5" />}
+                        label={t.automation.video}
+                      />
+                      <ProjectLink
+                        href={p.code}
+                        icon={<Github className="w-3.5 h-3.5" />}
+                        label={t.automation.code}
+                      />
                     </div>
                   </div>
                 </div>

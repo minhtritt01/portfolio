@@ -4,12 +4,12 @@ export const seo = {
   en: {
     title: 'Phan Minh Tri | Software Engineer',
     description:
-      'Software Engineer specialising in Flutter (mobile, web, desktop), React, and Android Native. 3+ years shipping apps on App Store, Google Play, and Microsoft Store.',
+      'Software Engineer building n8n + AI automation for SMEs, specialising in Flutter (mobile, web, desktop), React, and Android Native. 3+ years shipping apps on App Store, Google Play, and Microsoft Store.',
   },
   vi: {
     title: 'Phan Minh Trí | Software Engineer',
     description:
-      'Software Engineer chuyên sâu Flutter (mobile, web, desktop), React và Android Native. Hơn 3 năm phát hành ứng dụng trên App Store, Google Play và Microsoft Store.',
+      'Software Engineer xây dựng hệ thống tự động hoá n8n + AI cho doanh nghiệp vừa và nhỏ, chuyên sâu Flutter (mobile, web, desktop), React và Android Native. Hơn 3 năm phát hành ứng dụng trên App Store, Google Play và Microsoft Store.',
   },
 }
 
@@ -19,12 +19,14 @@ export const translations = {
     greeting: "Hi, I'm",
     greetingRoles: [
       "Software Engineer",
+      "AI Automation Engineer",
       "Mobile & Web Developer",
       "Flutter & React"
     ],
     pillLabels: [
       "Flutter",
       "React",
+      "n8n",
       "Android Native"
     ],
     email: 'minhtritt01@gmail.com',
@@ -33,7 +35,7 @@ export const translations = {
     availability: "Open to work",
     hero: {
       welcome: "Welcome to my portfolio",
-      bio: "3+ years building cross-platform mobile, web & desktop apps. Specialising in Flutter and React — shipped on App Store, Google Play & Microsoft Store. Actively using AI tools to ship faster.",
+      bio: "3+ years building cross-platform mobile, web & desktop apps. Specialising in Flutter and React — shipped on App Store, Google Play & Microsoft Store. Actively using AI tools to ship faster. Now building n8n + AI automation for SMEs — RAG agents, document pipelines and inbox triage.",
       viewWork: "View Work",
       hireMe: "Hire Me",
       resume: "View Resume",
@@ -274,6 +276,31 @@ export const translations = {
       "On Ma Tutu": "AI-automated content site — Claude Code & Cowork write a blog post every day, while Claude scripts and Remotion renders daily videos."
     },
     },
+    automation: {
+      title: "AI Automation",
+      subtitle: "n8n workflows with AI in the loop",
+      video: "Video",
+      code: "Code",
+      differentiators: [
+      {
+        "title": "API-level integration",
+        "body": "Calling the Google Drive API directly when the built-in node has no option for the format conversion needed — not just wiring nodes together."
+      },
+      {
+        "title": "Error handling and edge cases",
+        "body": "A first-class concern, not an afterthought. Every project ships with an edge-case table in its README."
+      },
+      {
+        "title": "Production mobile background",
+        "body": "3+ years shipping Flutter apps to real users, so automation work can extend into the client-facing app."
+      }
+    ],
+      descriptions: {
+      "AI Customer Support Agent": "Telegram bot that answers spa policy questions completely — exceptions included — instead of handing off to a human. A Supabase pgvector RAG layer over the policy corpus resolves what the FAQ sheet can't, including a deliberately contradictory cancellation-fee vs. medical-exemption pair, answered correctly from a Vietnamese query against English documents.",
+      "CV Screening Pipeline": "Google Drive folder watch → Gemini Vision → scored against a job description → Google Sheets. Every CV is read the same way and scored with cited evidence before anyone opens a file. Uses Gemini Vision rather than PDF text extraction, which scrambles two-column layouts and attaches bullet points to the wrong employer.",
+      "AI Email Classifier": "Gmail trigger → Gemini categorisation → label applied → audit row logged to Sheets. The inbox sorts itself and every decision is logged for later audit. Error branches attribute failures using $prevNode.name rather than parsing error messages, which are shaped inconsistently across failure types."
+    },
+    },
     tech: {
       title: "Skills",
       subtitle: "Technologies I work with",
@@ -310,6 +337,7 @@ export const translations = {
     toc: {
       "experience": "Experience",
       "projects": "Projects",
+      "automation": "AI Automation",
       "tech": "Skills & Stack",
       "contact": "Contact"
     },
@@ -320,12 +348,14 @@ export const translations = {
     greeting: "Xin chào, tôi là",
     greetingRoles: [
       "Software Engineer",
+      "Kỹ sư Tự động hoá AI",
       "Lập trình Mobile & Web",
       "Flutter & React"
     ],
     pillLabels: [
       "Flutter",
       "React",
+      "n8n",
       "Android Native"
     ],
     email: 'minhtritt01@gmail.com',
@@ -334,7 +364,7 @@ export const translations = {
     availability: "Sẵn sàng nhận việc",
     hero: {
       welcome: "Chào mừng đến với portfolio của tôi",
-      bio: "Hơn 3 năm kinh nghiệm xây dựng ứng dụng mobile, web & desktop đa nền tảng. Chuyên sâu Flutter và React — đã phát hành trên App Store, Google Play & Microsoft Store. Chủ động dùng công cụ AI để làm việc nhanh hơn.",
+      bio: "Hơn 3 năm kinh nghiệm xây dựng ứng dụng mobile, web & desktop đa nền tảng. Chuyên sâu Flutter và React — đã phát hành trên App Store, Google Play & Microsoft Store. Chủ động dùng công cụ AI để làm việc nhanh hơn. Hiện xây dựng hệ thống tự động hoá n8n + AI cho doanh nghiệp vừa và nhỏ — RAG agent, pipeline xử lý tài liệu và phân loại hộp thư.",
       viewWork: "Xem dự án",
       hireMe: "Hợp tác cùng tôi",
       resume: "Xem CV",
@@ -575,6 +605,31 @@ export const translations = {
       "On Ma Tutu": "Trang nội dung tự động hoá bằng AI — Claude Code & Cowork viết blog mỗi ngày, Claude viết kịch bản và Remotion dựng video hàng ngày."
     },
     },
+    automation: {
+      title: "Tự động hoá AI",
+      subtitle: "Quy trình n8n với AI trong vòng lặp",
+      video: "Video",
+      code: "Code",
+      differentiators: [
+      {
+        "title": "Tích hợp ở tầng API",
+        "body": "Gọi thẳng Google Drive API khi node có sẵn không hỗ trợ định dạng cần chuyển đổi — không chỉ là nối các node lại với nhau."
+      },
+      {
+        "title": "Xử lý lỗi và trường hợp biên",
+        "body": "Được ưu tiên ngay từ đầu, không phải làm cho có. Mỗi dự án đều có bảng liệt kê trường hợp biên trong README."
+      },
+      {
+        "title": "Nền tảng mobile thực chiến",
+        "body": "Hơn 3 năm phát hành ứng dụng Flutter tới người dùng thật, nên phần tự động hoá có thể mở rộng thẳng vào ứng dụng cho khách hàng."
+      }
+    ],
+      descriptions: {
+      "AI Customer Support Agent": "Bot Telegram trả lời trọn vẹn các câu hỏi về chính sách của spa — bao gồm cả trường hợp ngoại lệ — thay vì chuyển cho nhân viên. Lớp RAG dùng Supabase pgvector trên kho tài liệu chính sách giải quyết được những câu hỏi mà bảng FAQ không xử lý nổi, kể cả cặp chính sách cố tình mâu thuẫn (phí huỷ lịch và miễn trừ vì lý do y tế), trả lời chính xác từ câu hỏi tiếng Việt trên tài liệu tiếng Anh.",
+      "CV Screening Pipeline": "Theo dõi thư mục Google Drive → Gemini Vision → chấm điểm theo mô tả công việc → Google Sheets. Mọi CV đều được đọc theo cùng một cách và chấm điểm kèm dẫn chứng trước khi có ai mở file. Dùng Gemini Vision thay vì trích xuất text từ PDF, vì cách đó làm xáo trộn CV bố cục hai cột và gán nhầm gạch đầu dòng sang công ty khác.",
+      "AI Email Classifier": "Gmail trigger → Gemini phân loại → gán nhãn → ghi dòng nhật ký vào Sheets. Hộp thư tự sắp xếp và mọi quyết định đều được ghi lại để kiểm tra sau. Nhánh xử lý lỗi xác định điểm lỗi bằng $prevNode.name thay vì đọc nội dung thông báo lỗi, vốn có định dạng không nhất quán giữa các loại lỗi."
+    },
+    },
     tech: {
       title: "Kỹ năng",
       subtitle: "Công nghệ tôi sử dụng",
@@ -611,6 +666,7 @@ export const translations = {
     toc: {
       "experience": "Kinh nghiệm",
       "projects": "Dự án",
+      "automation": "Tự động hoá AI",
       "tech": "Kỹ năng",
       "contact": "Liên hệ"
     },
